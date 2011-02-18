@@ -17,8 +17,10 @@
 (menu-bar-mode 0)
 (scroll-bar-mode -1)
 (set-cursor-color "red")
-(blink-cursor-mode -1)			;-1 off, 1 on
+(blink-cursor-mode 1)			;-1 off, 1 on
 (setq blink-cursor-interval 0.25)	;default is 0.5 seconds
+(setq blink-cursor-delay 5)             ;default 0.5
+
 (set-face-font 'default "-apple-monaco-medium-r-normal--10-100-72-72-m-100-iso10646-1")
 (set-background-color "OldLace") ;"AntiqueWhite2"  "ivory2" "ivory3
 (display-time)
@@ -54,6 +56,7 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 (defun load-directory-files (dir &optional regex)
   (let*

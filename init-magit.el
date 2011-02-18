@@ -12,6 +12,8 @@
 (add-to-list 'auto-coding-alist '("COMMIT_EDITMSG" . utf-8-unix)
              )
 
+(add-hook 'magit-log-edit-mode-hook 'turn-on-auto-fill)
+
 ;; git : magit
 (autoload 'magit-status "magit" nil t)
 (global-set-key (kbd "M-s M-s") 'magit-status)
