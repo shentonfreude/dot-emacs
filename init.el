@@ -40,11 +40,13 @@
 (setq-default indicate-empty-lines t)
 ;;(add-hook 'before-save-hook 'delete-trailing-whitespace) ; don't mess with other's code, yet
 
-
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Sometimes Emacs hangs on the Mac, apparently when trying to pop a
+;;; Flymake can't run and is being switched off, Cancel OK dialog. Try
+;;; and prevent the popup box, per Reed's suggestion
+;;; (http://superuser.com/questions/125569/how-to-fix-emacs-popup-dialogs-on-mac-os-x)
+;;; but a different method.  I found these vars in the y-or-no-p docs.
+(setq use-dialog-box nil)               ;no help for flymake, elsewhere?
+(setq flymake-gui-warnings-enabled nil)
 
 ;;;  Kapil's full-screen for CarbonEmacs
 (defun mac-toggle-max-window ()
