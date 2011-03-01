@@ -21,6 +21,13 @@
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 (load-library "flymake-cursor")
 
+(defun my-python-mode-common-hook ()
+  (linum-mode t)
+  )
+(add-hook 'python-mode-common-hook 'my-python-mode-common-hook)
+(add-hook 'python-mode-hook 'my-python-mode-common-hook)
+
+
 ;; (add-hook 'python-mode-hook
 ;; 	  #'(lambda ()
 ;; 	      (setq yas/mode-symbol 'python-mode)))

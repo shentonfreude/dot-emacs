@@ -13,16 +13,42 @@
 
 (server-start)
 
-(tool-bar-mode -1)
+(if window-system
+  (if (functionp 'scroll-bar-mode) (scroll-bar-mode -1))
+  (if (functionp 'tool-bar-mode) (tool-bar-mode -1))
+  (set-face-font 'default "-apple-monaco-medium-r-normal--10-100-72-72-m-100-iso10646-1")
+  (set-background-color "OldLace") ;"AntiqueWhite2"  "ivory2" "ivory3
+  (set-cursor-color "red")
+  (blink-cursor-mode 1)			;-1 off, 1 on
+  (setq blink-cursor-interval 0.25)	;default is 0.5 seconds
+  (setq blink-cursor-delay 5)             ;default 0.5
+;;  (setq global-linum-mode t)              ;maybe only in .py?
+  (setq linum-format "%d ")
+)
 (menu-bar-mode 0)
-(scroll-bar-mode -1)
-(set-cursor-color "red")
-(blink-cursor-mode 1)			;-1 off, 1 on
-(setq blink-cursor-interval 0.25)	;default is 0.5 seconds
-(setq blink-cursor-delay 5)             ;default 0.5
 
-(set-face-font 'default "-apple-monaco-medium-r-normal--10-100-72-72-m-100-iso10646-1")
-(set-background-color "OldLace") ;"AntiqueWhite2"  "ivory2" "ivory3
+(require 'modeline-posn)
+(setq-default modelinepos-column-limit 80) ;highlights in modeline
+
+;; Try this to highlight long lines
+;; https://support.process-one.net/doc/display/MESSENGER/Lines+no+longer+than+80+columns#Linesnolongerthan80columns-Emacs%3Acolumnmaker
+(custom-set-faces
+ '(my-tab-face            ((((class color)) (:background "orange"))) t)
+ '(my-trailing-space-face ((((class color)) (:background "OliveDrab1"))) t)  
+ '(my-long-line-face ((((class color)) (:background "khaki"))) t))
+
+(add-hook 'font-lock-mode-hook
+          (function
+           (lambda ()
+             (setq font-lock-keywords
+                   (append font-lock-keywords
+                           '(("\t+" (0 'my-tab-face append))
+                             ("^.\\{81,\\}$" (0 'my-long-line-face append))
+                             ("^.\\{81\\}\\(.+\\)$" (0 'my-long-line-facee append))
+;;                             ("[ \t]+$"      (0 'my-trailing-space-face append))
+                             ))))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (display-time)
 (setq line-move-visual nil)		;use old style next-true-line
 (setq-default indent-tabs-mode nil)	;no TABS, use Spaces 
