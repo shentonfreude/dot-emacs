@@ -6,6 +6,7 @@
 
 (setq mac-option-modifier nil)		;for international chars like ü
 (setq mac-command-modifier 'meta)	;Command for emacs Meta
+(set-language-environment "UTF-8")
 
 ;;; Set PAGER and EDITOR so git doesn't complain: terminal is not fully functional
 (setenv "PAGER" "cat")
@@ -32,8 +33,9 @@
 
 ;; Try this to highlight long lines
 ;; https://support.process-one.net/doc/display/MESSENGER/Lines+no+longer+than+80+columns#Linesnolongerthan80columns-Emacs%3Acolumnmaker
+;; ONLY WANT THIS IN PYTHON; TAB highlighting is too ugly normally
 (custom-set-faces
- '(my-tab-face            ((((class color)) (:background "orange"))) t)
+;; '(my-tab-face            ((((class color)) (:background "orange"))) t)
  '(my-trailing-space-face ((((class color)) (:background "OliveDrab1"))) t)  
  '(my-long-line-face ((((class color)) (:background "khaki"))) t))
 
@@ -49,12 +51,14 @@
                              ))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (display-time)
 (setq line-move-visual nil)		;use old style next-true-line
 (setq-default indent-tabs-mode nil)	;no TABS, use Spaces 
 (column-number-mode t)
 ;;;
 
+;;; Render Linux shells instead of showing escape codes
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 ;;; in ipython do %colors lightbg to avoid white on light background
