@@ -1,11 +1,11 @@
-This is magit.info, produced by makeinfo version 4.13 from magit.texi.
+This is magit.info, produced by makeinfo version 4.8 from magit.texi.
 
 INFO-DIR-SECTION Emacs
 START-INFO-DIR-ENTRY
 * Magit: (magit).        Using Git from Emacs with Magit.
 END-INFO-DIR-ENTRY
 
-   Copyright (C) 2008, 2009 Marius Vollmer
+   Copyright (C) 2008, 2009, 2011 Marius Vollmer
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -43,7 +43,8 @@ an extension to Emacs.
 * Rebasing::
 * Rewriting::
 * Pushing and Pulling::
-* Interfacing with Subversion::
+* Submodules::
+* Using Magit Extensions::
 * Using Git Directly::
 
 
@@ -208,18 +209,18 @@ the working tree and the staging area.  You can hide and show them as
 described in the previous section.
 
    The first section shows _Untracked files_, if there are any.  See
-*note Untracked files:: for more details.
+*Note Untracked files:: for more details.
 
    Two section show your local changes.  They are explained fully in the
-next chapter, *note Staging and Committing::.
+next chapter, *Note Staging and Committing::.
 
    If the current branch is associated with a remote tracking branch,
 the status buffer shows the differences between the current branch and
-the tracking branch.  See *note Pushing and Pulling:: for more
+the tracking branch.  See *Note Pushing and Pulling:: for more
 information.
 
    During a history rewriting session, the status buffer shows the
-_Pending changes_ and _Pending commits_ sections.  See *note
+_Pending changes_ and _Pending commits_ sections.  See *Note
 Rewriting:: for more details.
 
 
@@ -277,6 +278,9 @@ in the region are staged or unstaged.  (This works line by line: if the
 beginning of a line is in the region it is included in the changes,
 otherwise it is not.)
 
+   Typing `C-u s' will ask you for a name of a file to be staged, for
+example to stage files that are hidden.
+
    To move all hunks of all diffs into the staging area in one go, type
 `S'.  To unstage everything, type `U'.
 
@@ -293,6 +297,9 @@ changes.
 description.  Once you are happy with the description, type `C-c C-c'
 in that buffer to perform the commit.
 
+   If you want to write changes in a `ChangeLog' file, you can use `C-x
+4 a' on a diff hunk.
+
    Typing `c' when the staging area is unused is a special situation.
 Normally, the next commit would be empty, but you can configure Magit
 to do something more useful by customizing the
@@ -306,6 +313,10 @@ current commit in HEAD.
 
    Typing `C-c C-s' will toggle the `--signoff' option.  The default is
 determined by the `magit-commit-signoff' customization variable.
+
+   Typing `C-c C-e' will toggle the `--allow-empty' option.  This
+allows you to make commits that serve as notes, without including any
+changes.
 
    If you change your mind and don't want to go ahead with your commit
 while you are in the `*magit-log-edit*' buffer, you can just switch to
@@ -326,16 +337,18 @@ File: magit.info,  Node: History,  Next: Reflogs,  Prev: Staging and Committing,
 7 History
 *********
 
-To show the repository history of your current head, type `l'.  A new
+To show the repository history of your current head, type `l l'.  A new
 buffer will be shown that displays the history in a terse form.  The
 first paragraph of each commit message is displayed, next to a
 representation of the relationships between commits.
 
    Giving a prefix argument to `l' will ask for the starting and end
 point of the history.  This can be used to show the commits that are in
-one branch, but not in another, for example.
+one branch, but not in another, for example.  The start point can also
+be a range of revisions "r1..r2".  In that case "r1" is used as the
+start and "r2" as the end point of the history.
 
-   Typing `L' (or `C-u L') will show the log in a more verbose form.
+   Typing `l L' (or `l C-u L') will show the log in a more verbose form.
 
    Magit will show only `magit-log-cutoff-length' entries. `e' will
 show twice as many entries. `C-u e' will show all entries, and given a
@@ -389,12 +402,12 @@ File: magit.info,  Node: Reflogs,  Next: Diffing,  Prev: History,  Up: Top
 8 Reflogs
 *********
 
-You can use `h' and `H' to browse your _reflog_, the local history of
-changes made to your repository heads.  Typing `H' will ask for a head,
-while `h' will show the reflog of `HEAD'.
+You can use `l h' and `l H' to browse your _reflog_, the local history
+of changes made to your repository heads.  Typing `H' will ask for a
+head, while `l h' will show the reflog of `HEAD'.
 
-   The resulting buffer is just like the buffer produced by `l' and `L'
-that shows the commit history.
+   The resulting buffer is just like the buffer produced by `l l' and
+`l L' that shows the commit history.
 
 
 File: magit.info,  Node: Diffing,  Next: Tagging,  Prev: Reflogs,  Up: Top
@@ -419,7 +432,7 @@ File: magit.info,  Node: Tagging,  Next: Resetting,  Prev: Diffing,  Up: Top
 10 Tagging
 **********
 
-Typing `t' will make a lighweight tag.  Typing `T' will make a
+Typing `t t' will make a lighweight tag.  Typing `t T' will make a
 annotated tag.  It will put you in the normal `*magit-log-edit' buffer
 for writing commit messages, but typing `C-c C-c' in it will make the
 tag instead.  This is controlled by the `Tag' field that will be added
@@ -466,16 +479,20 @@ File: magit.info,  Node: Stashing,  Next: Branching,  Prev: Resetting,  Up: Top
 12 Stashing
 ***********
 
-You can create a new stash with `z'.  Your stashes will be listed in
+You can create a new stash with `z z'.  Your stashes will be listed in
 the status buffer, and you can apply them with `a' and pop them with
 `A'.  To drop a stash, use `k'.
 
-   Typing `Z' will create a stash just like `z', but will leave the
+   With a prefix argument, both `a' and `A' will attempt to reinstate
+the index as well as the working tree from the stash.
+
+   Typing `z Z' will create a stash just like `z z', but will leave the
 changes in your working tree and index.
 
    You can visit and show stashes in the usual way: Typing `SPC' and
 `DEL' will pop up a buffer with the description of the stash and scroll
-it, typing `RET' will move point into that buffer.
+it, typing `RET' will move point into that buffer. Using `C-u RET' will
+move point into that buffer in other window.
 
 
 File: magit.info,  Node: Branching,  Next: The branch list,  Prev: Stashing,  Up: Top
@@ -484,7 +501,7 @@ File: magit.info,  Node: Branching,  Next: The branch list,  Prev: Stashing,  Up
 ************
 
 The current branch is indicated in the header of the status buffer.
-You can switch to a different branch by typing `b'.  This will
+You can switch to a different branch by typing `b c'.  This will
 immediately checkout the branch into your working copy, so you
 shouldn't have any local modifications when switching branches.
 
@@ -492,14 +509,14 @@ shouldn't have any local modifications when switching branches.
 local tracking branch for it instead.  This way, you can easily start
 working on new branches that have appeared in a remote repository.
 
-   Similar to `x', typing `b' while point is at a commit description
-will offer that commit as the default to switch to.  This will result
-in a detached head.
+   Typing `b c' while point is at a commit description will offer that
+commit as the default to switch to.  This will result in a detached
+head.
 
-   To create a new branch and switch to it immediately, type `B'.
+   To create a new branch and switch to it immediately, type `b B'.
 
-   Typing `V' will list the local and remote branches in a new buffer
-called `*magit-branches*' from which you can work with them. See *note
+   Typing `b V' will list the local and remote branches in a new buffer
+called `*magit-branches*' from which you can work with them. See *Note
 The branch list:: for more details.
 
 
@@ -517,10 +534,10 @@ local branch is marked by a "*" in front of the name.
 deletes it even if it hasn't been merged into the current local branch.
 Deleting works for both local and remote branches.
 
-   You can merge the branch in the current line by typing `m' for a
-manual merge and `M' for an automatic merge.
+   You can merge the branch in the current line by typing `m m' for a
+manual merge and `m m' for an automatic merge.
 
-   With `RET' or `b' you can check out the branch in the current line.
+   With `RET' or `b b' you can check out the branch in the current line.
 
    Typing `$' shows the `*magit-process*' buffer which contains the
 transcript of the most recent command.
@@ -561,17 +578,9 @@ manual merge will apply all changes to your working tree and staging
 area, but will not commit them, while a automatic merge will go ahead
 and commit them immediately.
 
-   Type `m' to initiate a manual merge, and type `M' for a automatic
-merge.
+   Type `m m' to initiate merge.
 
-   A manual merge is useful when carefully merging a new feature that
-you want to review and test before even committing it.  An automatic
-merge is appropriate when you are on a feature branch and want to catch
-up with the master, say. If you would like to squash the merge (have git
-avoid creating a merge commit) then use a prefix argument with the
-command (`C-U m').
-
-   After initiating a manual merge, the header of the status buffer will
+   After initiating a merge, the header of the status buffer might
 remind you that the next commit will be a merge commit (with more than
 one parent).  If you want to abort a manual merge, just do a hard reset
 to HEAD with `X'.
@@ -613,7 +622,7 @@ File: magit.info,  Node: Rewriting,  Next: Pushing and Pulling,  Prev: Rebasing,
 ************
 
 As hinted at earlier, you can rewrite your commit history.  For
-example, you can reset he current head to an earlier commit with `x'.
+example, you can reset the current head to an earlier commit with `x'.
 This leaves the working tree unchanged, and the status buffer will show
 all the changes that have been made since that new value of the current
 head.  You can commit these changes again, possibly splitting them into
@@ -630,7 +639,7 @@ different order.  You could pick them from the reflog, for example.
 associated with rewriting.  These commands all start with the `r'
 prefix key.
 
-   Typing `r s' will start a rewrite operation.  You will be prompted
+   Typing `r b' will start a rewrite operation.  You will be prompted
 for a _base_ commit, and all commits between the current head and this
 commit are put in a list of _Pending commits_ (including the base
 commit).  The current head will then be reset to the parent of the base
@@ -674,24 +683,24 @@ changes that you still need to rewrite, and you can apply hunks from
 it, like from any other diff.
 
 
-File: magit.info,  Node: Pushing and Pulling,  Next: Interfacing with Subversion,  Prev: Rewriting,  Up: Top
+File: magit.info,  Node: Pushing and Pulling,  Next: Submodules,  Prev: Rewriting,  Up: Top
 
 19 Pushing and Pulling
 **********************
 
-Magit will run `git push' when you type `P'.  If you give a prefix
-argument to `P', you will be prompted for the repository to push to.
+Magit will run `git push' when you type `P p'.  If you give a prefix
+argument to `P p', you will be prompted for the repository to push to.
 When no default remote repository has been configured yet for the
-current branch, you will be prompted as well.  Typing `P' will only
+current branch, you will be prompted as well.  Typing `P p' will only
 push the current branch to the remote.  In other words, it will run
 `git push <remote> <branch>'.  The branch will be created in the remote
 if it doesn't exist already.  The local branch will be configured so
 that it pulls from the new remote branch.
 
-   Typing `f' will run `git remote update'.  With a prefix arg, it will
-prompt for the name of the remote to update.  Typing `F' will run `git
-pull'.  When you don't have a default branch configured to be pulled
-into the current one, you will be asked for it.
+   Typing `f f' will run `git remote update'.  With a prefix arg, it
+will prompt for the name of the remote to update.  Typing `F p' will
+run `git pull'.  When you don't have a default branch configured to be
+pulled into the current one, you will be asked for it.
 
    If there is a default remote repository for the current branch, Magit
 will show that repository in the status buffer header.
@@ -701,30 +710,164 @@ section that shows the commits on your current head that are not in the
 branch named `<remote>/<branch>'.  This section works just like the
 history buffer: you can see details about a commit with `RET', compare
 two of them with `.' and `=', and you can reset your current head to
-one of them with `x', for example.
+one of them with `x', for example. If you want to push the changes then
+type `P p'.
 
    When the remote branch has changes that are not in the current
 branch, Magit shows them in a section called _Unpulled changes_.  Typing
-`F' will merge them into the current branch.
+`F p' will merge them into the current branch.
 
 
-File: magit.info,  Node: Interfacing with Subversion,  Next: Using Git Directly,  Prev: Pushing and Pulling,  Up: Top
+File: magit.info,  Node: Submodules,  Next: Using Magit Extensions,  Prev: Pushing and Pulling,  Up: Top
 
-20 Interfacing with Subversion
-******************************
+20 Submodules
+*************
 
-Typing `N r' runs `git svn rebase' and typing `N c' runs `git svn
-dcommit'.
+`M u'
+     Update the submodules, with a prefix argument it will initializing.
 
-   `N f' will prompt you for a (numeric, Subversion) revision and then
+`M i'
+     Initialize the submodules.
+
+`M b'
+     Update and initialize the submodules in one go.
+
+`M s'
+     Synchronizes submodules' remote URL configuration setting to the
+     value specified in .gitmodules.
+
+
+File: magit.info,  Node: Using Magit Extensions,  Next: Using Git Directly,  Prev: Submodules,  Up: Top
+
+21 Magit Extensions
+*******************
+
+* Menu:
+
+* Interfacing with Subversion::
+* Interfacing with Topgit::
+* Developing Extensions::
+
+
+File: magit.info,  Node: Interfacing with Subversion,  Next: Interfacing with Topgit,  Up: Using Magit Extensions
+
+21.1 Interfacing with Subversion
+================================
+
+Typing `N r' runs `git svn rebase', typing `N c' runs `git svn dcommit'
+and typing `N f' runs `git svn fetch'.
+
+   `N s' will prompt you for a (numeric, Subversion) revision and then
 search for a corresponding Git sha1 for the commit. This is limited to
-the path of the remote Subversion repository. With a prefix (`C-u N f'
+the path of the remote Subversion repository. With a prefix (`C-u N s'
 the user will also be prompted for a branch to search in.
 
 
-File: magit.info,  Node: Using Git Directly,  Prev: Interfacing with Subversion,  Up: Top
+File: magit.info,  Node: Interfacing with Topgit,  Next: Developing Extensions,  Prev: Interfacing with Subversion,  Up: Using Magit Extensions
 
-21 Using Git Directly
+21.2 Interfacing with Topgit
+============================
+
+Topgit (http://repo.or.cz/r/topgit.git) is a patch queue manager that
+aims at being close as possible to raw Git, which makes it easy to use
+with Magit. In particular, it does not require to use a different set of
+commands for "commit", "update",… operations.
+
+   `magit-topgit.el' provides basic integration with Magit, mostly by
+providing a "Topics" section.
+
+   Topgit branches can be created the regular way, by using a "t/"
+prefix by convention. So, creating a "t/foo" branch will actually
+populate the "Topics" section with one more branch after committing
+`.topdeps' and `.topmsg'.
+
+   Also, the way we pull (see *Note Pushing and Pulling::) such a
+branch is slightly different, since it requires updating the various
+dependencies of that branch. This should be mostly transparent, except
+in case of conflicts.
+
+
+File: magit.info,  Node: Developing Extensions,  Prev: Interfacing with Topgit,  Up: Using Magit Extensions
+
+21.3 Developing Extensions
+==========================
+
+Magit provides a generic mechanism to allow cooperation with Git-related
+systems, such as foreign VCS, patch systems,…
+
+   In particular it allows to:
+
+   * Define sections to display specific informations about the current
+     state of the repository, and place them relatively to existing
+     sections.
+
+     `magit-define-inserter' automagically defines two hooks called
+     `magit-before-insert-SECTION-hook' and
+     `magit-after-insert-SECTION-hook' that allow to generate and place
+     more sections.
+
+     In the following example, we use the builtin "stashes" section to
+     place our own "foo" one.
+
+          (magit-define-inserter foo ()
+            (magit-git-section 'foo
+                               "Foo:" 'foo-wash-function
+                               "foo" "arg1" "arg2"))
+          (add-hook 'magit-after-insert-stashes-hook 'magit-insert-foo)
+
+   * Define new types of objects in those sections.
+
+     The function `foo-wash-function' defined above post-processes each
+     line of the output of the "git foo arg1 arg2" command, and is able
+     to associate a type to certain lines.
+
+     A simple implementation could be:
+
+          (defun foo-wash-function ()
+            (let ((foo (buffer-substring (line-beginning-position) (line-end-position))))
+              (goto-char (line-beginning-position))
+              (magit-with-section foo 'foo
+                (magit-set-section-info foo)
+                (forward-line))))
+
+     In this case, every line of the command output is transformed into
+     an object of type `'foo'.
+
+   * Alter behavior of generic commands to dispatch them correctly to
+     the relevant system, optionally making use of the newly defined
+     types.
+
+          (magit-add-action (item info "discard")
+            ((foo)
+             (do-something-meaningful-for-discarding-a-foo)))
+
+     This will alter the behavior of `k', when applied to those objects.
+
+   * Plug a different logic into basic commands, to reflect the
+     presence of the extension.
+
+     `magit-define-command' automagically defines a
+     `magit-CMD-command-hook' that can contain a list of functions to
+     call before the actual core code. Execution stops after the first
+     hook that returns a non-nil value. This leaves room for extension
+     logic.
+
+          (add-hook 'magit-create-branch-command-hook 'foo-create-branch)
+
+     The function `foo-create-branch' will be called each time an
+     attempt is made to create a branch, and can, for example, react to
+     a certain name convention.
+
+   * Define new commands and associated menu.
+
+     This part is not really specific to extensions, except that menus
+     take place in the "Extensions" submenu.
+
+
+
+File: magit.info,  Node: Using Git Directly,  Prev: Using Magit Extensions,  Up: Top
+
+22 Using Git Directly
 *********************
 
 For situations when Magit doesn't do everything you need, you can run
@@ -735,32 +878,31 @@ it, and refresh the status buffer.  The output can be viewed by typing
 
 
 Tag Table:
-Node: Top550
-Node: Introduction1104
-Node: Acknowledgments2575
-Node: Sections3199
-Node: Status5749
-Node: Untracked files8478
-Node: Staging and Committing9425
-Node: History12619
-Node: Reflogs15354
-Node: Diffing15742
-Node: Tagging16340
-Node: Resetting16784
-Node: Stashing18308
-Node: Branching18889
-Node: The branch list19880
-Node: Wazzup20862
-Node: Merging21650
-Node: Rebasing23121
-Node: Rewriting23936
-Node: Pushing and Pulling26790
-Node: Interfacing with Subversion28433
-Node: Using Git Directly28966
+Node: Top555
+Node: Introduction1119
+Node: Acknowledgments2590
+Node: Sections3214
+Node: Status5764
+Node: Untracked files8493
+Node: Staging and Committing9440
+Node: History12985
+Node: Reflogs15868
+Node: Diffing16266
+Node: Tagging16864
+Node: Resetting17312
+Node: Stashing18836
+Node: Branching19614
+Node: The branch list20597
+Node: Wazzup21585
+Node: Merging22373
+Node: Rebasing23424
+Node: Rewriting24239
+Node: Pushing and Pulling27094
+Node: Submodules28781
+Node: Using Magit Extensions29211
+Node: Interfacing with Subversion29455
+Node: Interfacing with Topgit30023
+Node: Developing Extensions31050
+Node: Using Git Directly33923
 
 End Tag Table
-
-
-Local Variables:
-coding: utf-8
-End:

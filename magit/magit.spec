@@ -1,5 +1,5 @@
 Name:		magit
-Version:	0.8.2
+Version:	1.0.0
 Release:	1%{?dist}
 Summary:	An Emacs Extension for Git
 BuildArch: noarch
@@ -36,7 +36,7 @@ rm -rf $RPM_BUILD_ROOT
 /usr/share/emacs/site-lisp/site-start.d/50magit.el
 /usr/share/emacs/site-lisp/magit.el
 /usr/share/emacs/site-lisp/magit.elc
-%doc README NEWS COPYING AUTHORS
+%doc README.md
 /usr/share/info/magit.info.gz
 
 %changelog

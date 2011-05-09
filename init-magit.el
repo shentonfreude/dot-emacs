@@ -4,6 +4,7 @@
 
 (autoload 'magit-status "magit" nil t)
 
+(add-to-list 'load-path (concat emacs-dir "/magit"))
 (add-to-list 'process-coding-system-alist '("git" . utf-8))
 
 (add-hook 'dired-mode-hook
