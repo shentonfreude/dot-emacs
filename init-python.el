@@ -26,6 +26,18 @@
   )
 (add-hook 'python-mode-common-hook 'my-python-mode-common-hook)
 (add-hook 'python-mode-hook 'my-python-mode-common-hook)
+(add-hook 'python-mode-common-hook
+          (function
+           (lambda ()
+             (setq font-lock-keywords
+                   (append font-lock-keywords
+                           '(("\t+" (0 'my-tab-face append))
+                             ("^.\\{81,\\}$" (0 'my-long-line-face append))
+                             ("^.\\{81\\}\\(.+\\)$" (0 'my-long-line-facee append))
+;;                             ("[ \t]+$"      (0 'my-trailing-space-face append))
+                             ))))))
+
+
 
 
 ;; (add-hook 'python-mode-hook
