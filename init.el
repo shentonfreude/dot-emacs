@@ -14,19 +14,22 @@
 
 (server-start)
 
+;;; WHY AM I GETTING DOUBLED LINE NUMBERS ON VARIABLE COMPLETION?
 (if window-system
   (if (functionp 'scroll-bar-mode) (scroll-bar-mode -1))
   (if (functionp 'tool-bar-mode) (tool-bar-mode -1))
-  (set-face-font 'default "-apple-monaco-medium-r-normal--10-100-72-72-m-100-iso10646-1")
-  (set-background-color "OldLace") ;"AntiqueWhite2"  "ivory2" "ivory3
-  (set-cursor-color "red")
-  (blink-cursor-mode 1)			;-1 off, 1 on
-  (setq blink-cursor-interval 0.25)	;default is 0.5 seconds
-  (setq blink-cursor-delay 5)             ;default 0.5
 ;;  (setq global-linum-mode t)              ;maybe only in .py?
-  (setq linum-format "%d ")
 )
+(if (functionp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (functionp 'tool-bar-mode) (tool-bar-mode -1))
 (menu-bar-mode 0)
+(set-background-color "OldLace") ;"AntiqueWhite2"  "ivory2" "ivory3
+(set-cursor-color "red")
+(set-face-font 'default "-apple-monaco-medium-r-normal--10-100-72-72-m-100-iso10646-1")
+(blink-cursor-mode 1)			;-1 off, 1 on
+(setq blink-cursor-interval 0.25)	;default is 0.5 seconds
+(setq blink-cursor-delay 5)             ;default 0.5
+(setq linum-format "%d ")
 
 (require 'modeline-posn)
 (setq-default modelinepos-column-limit 80) ;highlights in modeline
@@ -39,16 +42,16 @@
  '(my-trailing-space-face ((((class color)) (:background "OliveDrab1"))) t)  
  '(my-long-line-face ((((class color)) (:background "khaki"))) t))
 
-(add-hook 'font-lock-mode-hook
-          (function
-           (lambda ()
-             (setq font-lock-keywords
-                   (append font-lock-keywords
-                           '(("\t+" (0 'my-tab-face append))
-                             ("^.\\{81,\\}$" (0 'my-long-line-face append))
-                             ("^.\\{81\\}\\(.+\\)$" (0 'my-long-line-facee append))
-;;                             ("[ \t]+$"      (0 'my-trailing-space-face append))
-                             ))))))
+;; (add-hook 'font-lock-mode-hook
+;;           (function
+;;            (lambda ()
+;;              (setq font-lock-keywords
+;;                    (append font-lock-keywords
+;;                            '(("\t+" (0 'my-tab-face append))
+;;                              ("^.\\{81,\\}$" (0 'my-long-line-face append))
+;;                              ("^.\\{81\\}\\(.+\\)$" (0 'my-long-line-facee append))
+;; ;;                             ("[ \t]+$"      (0 'my-trailing-space-face append))
+;;                              ))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
