@@ -2,8 +2,6 @@
 ;;; https://github.com/philjackson/magit/downloads
 ;;; See also github-specific extensions: https://github.com/nex3/magithub/
 
-(autoload 'magit-status "magit" nil t)
-
 (add-to-list 'load-path (concat emacs-dir "/magit"))
 (add-to-list 'process-coding-system-alist '("git" . utf-8))
 
@@ -17,4 +15,4 @@
 
 ;; git : magit
 (autoload 'magit-status "magit" nil t)
-(global-set-key (kbd "M-s M-s") 'magit-status)
+(global-set-key (kbd "M-s M-s") 'magit-status) ;doesn't work -nox11 terminal
