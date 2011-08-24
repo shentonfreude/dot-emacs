@@ -1,2 +1,7 @@
-*.elc
 ac-comphist.dat
+*.elc
+<<<<<<< HEAD
+ac-comphist.dat
+=======
+
+>>>>>>> 83f3c8f43ac05c4a125697dbcbc6d19cd016c75d
