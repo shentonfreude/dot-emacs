@@ -24,6 +24,12 @@
 (if (functionp 'tool-bar-mode) (tool-bar-mode -1))
 (menu-bar-mode 0)
 (set-background-color "OldLace") ;"AntiqueWhite2"  "ivory2" "ivory3
+;; Linux shell output in yellow and white unreadable on OldLace background
+;; Really should look at Solarized theme: http://ethanschoonover.com/solarized
+(setq ansi-color-names-vector
+      ;;default: ["black" "red" "green" "yellow" "blue" "magenta" "cyan" "white"]
+      ["black" "red" "green" "yellow4" "blue" "magenta" "cyan4" "gray50"])
+
 (set-cursor-color "red")
 (set-face-font 'default "-apple-monaco-medium-r-normal--10-100-72-72-m-100-iso10646-1")
 (blink-cursor-mode 1)			;-1 off, 1 on
