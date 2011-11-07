@@ -4,6 +4,7 @@
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-solarized-light)
+     ;; text is too light, cursor should be red, trailing white shouldn't be red
+     ;;(color-theme-solarized-light)
      )
   )
