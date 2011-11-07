@@ -23,6 +23,7 @@
 
 (defun my-python-mode-common-hook ()
   (linum-mode t)
+  (setq show-trailing-whitespace t) ; color set by customization at end of file
   )
 (add-hook 'python-mode-common-hook 'my-python-mode-common-hook)
 (add-hook 'python-mode-hook 'my-python-mode-common-hook)

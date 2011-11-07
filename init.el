@@ -31,7 +31,8 @@
       ["black" "red" "green" "yellow4" "blue" "magenta" "cyan4" "gray50"])
 
 (set-cursor-color "red")
-(set-face-font 'default "-apple-monaco-medium-r-normal--10-100-72-72-m-100-iso10646-1")
+;;(set-face-font 'default "-apple-monaco-medium-r-normal--10-100-72-72-m-100-iso10646-1")
+(set-face-font 'default "-apple-monaco-medium-r-normal--12-100-72-72-m-100-iso10646-1")
 (blink-cursor-mode 1)			;-1 off, 1 on
 (setq blink-cursor-interval 0.25)	;default is 0.5 seconds
 (setq blink-cursor-delay 5)             ;default 0.5
@@ -75,7 +76,9 @@
 ;;; don't know how to specify this since it's not reading my .ipython/ fiels
 (ansi-color-for-comint-mode-on)
 
-(setq-default show-trailing-whitespace t) ; color set by customization at end of file
+;; Don't want this for all files -- especially Shell.
+;; See init-python (and probalby some init-rst or txt or something.
+;;(setq-default show-trailing-whitespace t) ; color set by customization at end of file
 (setq-default indicate-empty-lines t)
 ;;(add-hook 'before-save-hook 'delete-trailing-whitespace) ; don't mess with other's code, yet
 
