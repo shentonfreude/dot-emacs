@@ -45,9 +45,13 @@
 ;; https://support.process-one.net/doc/display/MESSENGER/Lines+no+longer+than+80+columns#Linesnolongerthan80columns-Emacs%3Acolumnmaker
 ;; ONLY WANT THIS IN PYTHON; TAB highlighting is too ugly normally
 (custom-set-faces
-;; '(my-tab-face            ((((class color)) (:background "orange"))) t)
- '(my-trailing-space-face ((((class color)) (:background "OliveDrab1"))) t)  
- '(my-long-line-face ((((class color)) (:background "khaki"))) t))
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(my-long-line-face ((((class color)) (:background "khaki"))) t)
+ '(my-trailing-space-face ((((class color)) (:background "OliveDrab1"))) t)
+ '(trailing-whitespace ((((class color) (background light)) (:background "cyan")))))
 
 ;; (add-hook 'font-lock-mode-hook
 ;;           (function
@@ -125,17 +129,15 @@
   ;; If there is more than one, they won't work right.
  '(display-time-mode t)
  '(frame-background-mode (quote light))
+ '(js2-auto-indent-flag nil)
+ '(js2-basic-offset 4)
+ '(js2-mirror-mode nil)
+ '(js2-mode-indent-ignore-first-tab t)
  '(save-place t nil (saveplace))
  '(show-paren-mode t)
+ '(sql-sqlite-program "sqlite3" t)
  '(transient-mark-mode t)
- '(sql-sqlite-program "sqlite3")
  '(uniquify-buffer-name-style (quote post-forward) nil (uniquify)))
  ;;'(uniquify-buffer-name-style (quote reverse) nil (uniquify)))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(trailing-whitespace ((((class color) (background light)) (:background "cyan"))))
- )
+
 
