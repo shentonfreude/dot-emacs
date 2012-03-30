@@ -15,7 +15,9 @@
     (set-variable 'indent-tabs-mode nil)
     (add-hook 'after-save-hook 'my-js-validate)))
 
-
+(defun before-save-hook ()
+  (delete-trailing-whitespace)
+  )
 
 ;; this could get very annoying, with my errors!
 (add-hook 'javascript-mode-hook 'my-js-hooks)
