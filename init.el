@@ -31,12 +31,17 @@
       ["black" "red" "green" "yellow4" "blue" "magenta" "cyan4" "gray50"])
 
 (set-cursor-color "red")
-;;(set-face-font 'default "-apple-monaco-medium-r-normal--10-100-72-72-m-100-iso10646-1")
-(set-face-font 'default "-apple-monaco-medium-r-normal--12-100-72-72-m-100-iso10646-1")
+(set-face-font 'default "-apple-monaco-medium-r-normal--10-100-72-72-m-100-iso10646-1")
+;;(set-face-font 'default "-apple-monaco-medium-r-normal--12-100-72-72-m-100-iso10646-1")
 (blink-cursor-mode 1)			;-1 off, 1 on
 (setq blink-cursor-interval 0.25)	;default is 0.5 seconds
 (setq blink-cursor-delay 5)             ;default 0.5
 (setq linum-format "%d ")
+
+;; Want to colorize escape codes; does this really work?
+;; M-x ansi-term disables M-x commands :-(
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (require 'modeline-posn)
 (setq-default modelinepos-column-limit 80) ;highlights in modeline
