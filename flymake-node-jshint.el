@@ -11,11 +11,19 @@
 ;; DEBUG
 ;; * use "M-x set-var flymake-log-level 3" and watch *Messages*
 
-;; APPROACH
-;; * use "brew install node" to get 'node', 'jslint', and 'jshint'
-;;   installed into /usr/local/bin/
 ;; * use 'jshint' to get single-line output format
 ;; * Regex and masks from https://github.com/jegbjerg/flymake-node-jshint
+
+;; INSTALL JSHINT:
+;; * use "brew install node" to get 'node', 'npm', then 'jslint'::
+;;     brew install node
+;;     npm install -g jshint   # does NOT install in /usr/local/bin/ for some reason
+;;   As of node-v0.8.8, 'npm' installs jshint in a library dir, not
+;;   /usr/local/bin/, you will need to add that to your path:
+;;     export PATH=${PATH}:/usr/local/share/npm/bin/jshint
+;;   My Alfred-launched Emacs is not finding that, then symlink it from
+;;   /usr/local/bin/ so our hard-coded paths here work::
+;;     ln -s /usr/local/share/npm/bin/jshint /usr/local/bin/
 
 (require 'flymake)
 
@@ -30,8 +38,8 @@
              '("\\.json\\'" flymake-jshint-init))
 
 ;; We don't really need to get the filename for flymake since
-;; it's using a temp file, but do it non-greedy anyway; slower? 
-(setq flymake-err-line-patterns 
+;; it's using a temp file, but do it non-greedy anyway; slower?
+(setq flymake-err-line-patterns
       (cons '("^\\(.*?\\): line \\([[:digit:]]+\\), col \\([[:digit:]]+\\), \\(.+\\)$"
 	      1 2 3 4)
 	    flymake-err-line-patterns))
