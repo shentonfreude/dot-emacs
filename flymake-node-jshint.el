@@ -24,6 +24,8 @@
 ;;   My Alfred-launched Emacs is not finding that, then symlink it from
 ;;   /usr/local/bin/ so our hard-coded paths here work::
 ;;     ln -s /usr/local/share/npm/bin/jshint /usr/local/bin/
+;;   jshint will look for ~/.jshintrc but I can't figure out how
+;;   to allow "++" to be tolerated in my .js files.
 
 (require 'flymake)
 
