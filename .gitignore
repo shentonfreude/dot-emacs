@@ -5,3 +5,5 @@ ac-comphist.dat
 auto-save-list
 /abbrev_defs
 /url/cookies
+/elpa/
+/init-package.el
