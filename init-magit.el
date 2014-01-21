@@ -2,6 +2,9 @@
 ;;; https://github.com/philjackson/magit/downloads
 ;;; See also github-specific extensions: https://github.com/nex3/magithub/
 
+;;; 2014-01-21 Install from Melpa
+
+
 (add-to-list 'load-path (concat emacs-dir "/magit"))
 (add-to-list 'process-coding-system-alist '("git" . utf-8))
 
