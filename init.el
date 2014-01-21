@@ -9,8 +9,9 @@
 (set-language-environment "UTF-8")
 
 ;;; Set PAGER and EDITOR so git doesn't complain: terminal is not fully functional
+;;; 2013-10-01 REmove EDITOR; new magit fires off new emacs instead of internal on commits
+;;;(setenv "EDITOR" "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient")
 (setenv "PAGER" "cat")
-(setenv "EDITOR" "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient")
 
 (server-start)
 
