@@ -23,5 +23,5 @@
 
 ;; git : magit
 (autoload 'magit-status "magit" nil t)
-(global-set-key (kbd "M-s M-s") 'magit-status) ;doesn't work -nox11 terminal
+;; TOO easy to hit: (global-set-key (kbd "M-s M-s") 'magit-status) ;doesn't work -nox11 terminal
 (global-set-key (kbd "C-x C-g") 'magit-status) ;for -nox11 terminals
