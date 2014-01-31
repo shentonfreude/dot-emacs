@@ -1,9 +1,9 @@
 ac-comphist.dat
 *.elc
 ac-comphist.dat
-/tramp
+tramp
 auto-save-list
-/abbrev_defs
-/url/cookies
-/elpa/
-/init-package.el
+abbrev_defs
+url/cookies
+elpa/
+
