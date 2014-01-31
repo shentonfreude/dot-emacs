@@ -13,6 +13,11 @@
 
 (add-hook 'magit-log-edit-mode-hook 'turn-on-auto-fill)
 
+;; 2013-11-26 Prevent popup of /usr/bin/emacsclient
+;; http://stackoverflow.com/questions/18856047/emacs-magit-commit-opens-new-emacs-client
+(set-variable 'magit-emacsclient-executable "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient")
+
+
 ;; git : magit
 (autoload 'magit-status "magit" nil t)
 (global-set-key (kbd "M-s M-s") 'magit-status) ;doesn't work -nox11 terminal

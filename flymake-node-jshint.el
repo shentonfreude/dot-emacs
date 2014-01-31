@@ -15,7 +15,7 @@
 ;; * Regex and masks from https://github.com/jegbjerg/flymake-node-jshint
 
 ;; INSTALL JSHINT:
-;; * use "brew install node" to get 'node', 'npm', then 'jslint'::
+;; * use "brew install node" to get 'node', 'npm', then 'jslint' with -g global flag::
 ;;     brew install node
 ;;     npm install -g jshint   # does NOT install in /usr/local/bin/ for some reason
 ;;   As of node-v0.8.8, 'npm' installs jshint in a library dir, not
