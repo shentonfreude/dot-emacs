@@ -18,7 +18,10 @@
 
 ;; 2013-11-26 Prevent popup of /usr/bin/emacsclient
 ;; http://stackoverflow.com/questions/18856047/emacs-magit-commit-opens-new-emacs-client
-(set-variable 'magit-emacsclient-executable "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient")
+;; 2014-04-14 Hand-installed has emacs and emacsclient in /usr/local/bin/
+;;(set-variable 'magit-emacsclient-executable "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient")
+(set-variable 'magit-emacsclient-executable "/usr/local/bin/emacsclient")
+
 
 
 ;; git : magit
