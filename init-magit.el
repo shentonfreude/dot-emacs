@@ -5,7 +5,6 @@
 ;;; 2014-01-21 Install from Melpa
 
 
-(add-to-list 'load-path (concat emacs-dir "/magit"))
 (add-to-list 'process-coding-system-alist '("git" . utf-8))
 
 (add-hook 'dired-mode-hook
@@ -18,13 +17,16 @@
 
 ;; 2013-11-26 Prevent popup of /usr/bin/emacsclient
 ;; http://stackoverflow.com/questions/18856047/emacs-magit-commit-opens-new-emacs-client
-;; 2014-04-14 Hand-installed has emacs and emacsclient in /usr/local/bin/
-;;(set-variable 'magit-emacsclient-executable "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient")
-(set-variable 'magit-emacsclient-executable "/usr/local/bin/emacsclient")
-
-
+;;(set-variable 'magit-emacsclient-executable "/usr/local/bin/emacsclient") ;hand-installed
+;;(set-variable 'magit-emacsclient-executable "/usr/local/Cellar/emacs/24.3/bin/emacsclient") ;brew-installed
+;;(set-variable 'magit-emacsclient-executable "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient") ;downloaded pre-built
+(set-variable 'magit-emacsclient-executable "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient") ;downloaded pre-built
 
 ;; git : magit
 (autoload 'magit-status "magit" nil t)
 ;; TOO easy to hit: (global-set-key (kbd "M-s M-s") 'magit-status) ;doesn't work -nox11 terminal
 (global-set-key (kbd "C-x C-g") 'magit-status) ;for -nox11 terminals
+
+;; 2014-08-15 Add gitflow (C-f in magit status buffer)
+(require 'magit-gitflow)
+(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
