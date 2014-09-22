@@ -1,9 +1,9 @@
-;; ;;; YASnippet
-(add-to-list 'load-path "~/.emacs.d/yasnippet-0.6.1c")
-(require 'yasnippet)			;or BUNDLE
-(yas/initialize)
-;;;(yas/load-directory  "~/.emacs.d/yasnippet-0.6.1c/snippets")
-(yas/load-directory "~/.emacs.d/yasnippets") ;mine, not systems
+;; Basic steps to setup:
 
-;;; how to load snippit I've written separeate from system ones??
+;;  (add-to-list 'load-path
+;;               "~/path-to-yasnippet")
+
+;; 0.7.0 looks in ~/.emacs.d/snippets and the package snippets automatically
+(require 'yasnippet)
+(yas-global-mode 1)
 
