@@ -49,7 +49,7 @@
 ;; go-mode supports beginning-of-defun (C-M-a) and end-of-defun (C-M-e),
 
 
-If you want to, you can bind godef-jump to M-., which is the
+;; If you want to, you can bind godef-jump to M-., which is the
 ;; default key for find-tag, something you might already be using for
 ;; other programming languages:
 
