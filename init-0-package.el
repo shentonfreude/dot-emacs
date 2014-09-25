@@ -3,7 +3,7 @@
 ;; M-x package-install RET magit RET
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/") ;minimal, signed
                          ("marmalade" . "http://marmalade-repo.org/packages/") ;stable
-                         ;;("melpa" . "http://melpa.milkbox.net/packages/") ;snapshots
+                         ("melpa" . "http://melpa.milkbox.net/packages/") ;snapshots : direx?
                          ))
 
 (package-initialize)
