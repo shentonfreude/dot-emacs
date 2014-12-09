@@ -20,7 +20,9 @@
 ;;(set-variable 'magit-emacsclient-executable "/usr/local/bin/emacsclient") ;hand-installed
 ;;(set-variable 'magit-emacsclient-executable "/usr/local/Cellar/emacs/24.3/bin/emacsclient") ;brew-installed
 ;;(set-variable 'magit-emacsclient-executable "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient") ;downloaded pre-built
-(set-variable 'magit-emacsclient-executable "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient") ;downloaded pre-built
+(if (eq system-type 'darwin)
+    (set-variable 'magit-emacsclient-executable "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient") ;downloaded pre-built
+  )
 
 ;; git : magit
 (autoload 'magit-status "magit" nil t)
