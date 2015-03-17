@@ -4,7 +4,7 @@
 ;; Do this early so other packges find things; is this needed?
 ;; Only do this on OS X, it hangs on FreeBSD
 
-(if (eq system-type 'darwin)
-    ((require 'exec-path-from-shell) ;; if not using the ELPA package
-     (exec-path-from-shell-initialize)
-     ))
+;; 2015-03-17 https://github.com/bradleywright/exec-path-from-shell
+;; from Marmalade and MELPA
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
