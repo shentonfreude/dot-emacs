@@ -5,6 +5,14 @@
 ;;; M-x local-set-key <hit TAB> ipython-complete
 ;;; If you want emacs shell completion back:
 ;;;  M-x local-set-key <hit TAB> comint-dynamic-complete
+;;; pyflakes doesn't do PEP8 check, but we can use a wrapper that adds pep8.
+;;; flake8 doesn't appear to check test_*.py files at all so we don't
+;;; get help about bad format, unused imports. etc.
+;;; use pychecker with both pep8 and flake8, which works but is slower.
+;;;  pyflakes "$1"
+;;;  pep8 --repeat "$1"
+;;;  flake8
+;;;  true
 
 (when (load "flymake" t)
   (defun flymake-pyflakes-init ()
@@ -13,7 +21,7 @@
            (local-file (file-relative-name
                         temp-file
                         (file-name-directory buffer-file-name))))
-      (list "pyflakes" (list local-file))))
+      (list "pychecker" (list local-file))))
 
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pyflakes-init)))
