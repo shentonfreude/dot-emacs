@@ -1,0 +1,14 @@
+I should be able to have:
+
+copyright.avail
+copyright.koansys
+
+and type "copyright<TAB>" and have it suggest, but it does nothing, inserts a TAB.
+
+I have to set the "key: copyright" in each file to get it to use them,
+and it does suggest each's name.
+
+It pops up a graphic window, not the emacs text I was expecting. See
+new yas-prompt-functions, defaults to:
+
+(yas-x-prompt yas-dropdown-prompt yas-completing-prompt yas-ido-prompt yas-no-prompt)

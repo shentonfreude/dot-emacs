@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Copyright chris@koansys.com
+# key: copyright
+# You can do yas-reload-all to reread
+# --
+Copyright 2015 Chris Shenton <chris@koansys.com>.
+
