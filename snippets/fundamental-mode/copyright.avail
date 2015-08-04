@@ -1,6 +1,5 @@
 # -*- mode: snippet -*-
 # name: Copyright AVAIL ...
 # key: copyright
-# You can do yas-reload-all to reread
 # --
 Copyright 2015 AVAIL Authors. See AUTHORS.txt in the root of the repo.
