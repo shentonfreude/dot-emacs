@@ -26,6 +26,8 @@ here (though [cough] sometimes it hangs hard and I have to kill Emacs,
 thus losing all the buffers, shells, and inferior pythons I've been
 working on).
 
+2015-08-04 Trying to switch from flymake to flycheck with flake8....
+
 I'd love to have some sexy autocomplete like the Java
 IDE guys have.
 

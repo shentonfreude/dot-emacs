@@ -24,7 +24,10 @@
 (if (functionp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (functionp 'tool-bar-mode) (tool-bar-mode -1))
 (menu-bar-mode 0)
-(set-background-color "OldLace") ;"AntiqueWhite2"  "ivory2" "ivory3
+
+;; 2015-08-04 Try solarized-light defaults
+;; (set-background-color "OldLace") ;"AntiqueWhite2"  "ivory2" "ivory3
+
 ;; Linux shell output in yellow and white unreadable on OldLace background
 ;; Really should look at Solarized theme: http://ethanschoonover.com/solarized
 (setq ansi-color-names-vector
@@ -35,10 +38,6 @@
 (global-set-key (kbd "C-x F") 'menu-set-font ) ; or use C-x C-+, C-x C-, C-x C-0
 (set-face-font 'default "-apple-monaco-medium-r-normal--10-100-72-72-m-100-iso10646-1")
 ;;(set-face-font 'default "-apple-monaco-medium-r-normal--12-100-72-72-m-100-iso10646-1")
-(set-cursor-color "red")
-(blink-cursor-mode 1)			;-1 off, 1 on
-(setq blink-cursor-interval 0.25)	;default is 0.5 seconds
-(setq blink-cursor-delay 5)             ;default 0.5
 (setq linum-format "%d ")
 
 ;; Want to colorize escape codes; does this really work?
@@ -47,7 +46,7 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (require 'modeline-posn)
-(setq-default modelinepos-column-limit 80) ;highlights in modeline
+(setq-default modelinepos-column-limit 79) ;highlights in modeline
 
 ;; Try this to highlight long lines
 ;; https://support.process-one.net/doc/display/MESSENGER/Lines+no+longer+than+80+columns#Linesnolongerthan80columns-Emacs%3Acolumnmaker
@@ -137,12 +136,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("2e5705ad7ee6cfd6ab5ce81e711c526ac22abed90b852ffaf0b316aa7864b11f" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
  '(display-time-mode t)
  '(frame-background-mode (quote light))
+ '(global-flycheck-mode t)
  '(js2-auto-indent-flag nil)
  '(js2-basic-offset 4)
  '(js2-mirror-mode nil)
  '(js2-mode-indent-ignore-first-tab t)
+ '(magit-push-arguments nil)
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(save-place t nil (saveplace))
  '(show-paren-mode t)

@@ -12,7 +12,7 @@
 ;; TODO: Can't get flymake to run with json anyway, why?? inappropriate?
 (add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))
 
-(require 'flymake-node-jshint)
-(add-hook 'javascript-mode-hook
- 	  (lambda () (flymake-mode t)))
+;; (require 'flymake-node-jshint)
+;; (add-hook 'javascript-mode-hook
+;;  	  (lambda () (flymake-mode t)))
 

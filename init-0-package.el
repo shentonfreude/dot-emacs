@@ -1,9 +1,9 @@
 ;; instructions from https://github.com/magit/magit#installation
 ;; M-x package-refresh-contents RET
 ;; M-x package-install RET magit RET
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/") ;minimal, signed
-                         ("marmalade" . "http://marmalade-repo.org/packages/") ;stable
-                         ("melpa" . "http://melpa.milkbox.net/packages/") ;snapshots : direx?
+(setq package-archives '(("gnu"          . "http://elpa.gnu.org/packages/") ;minimal, signed
+                         ;;("melpa-stable" . "http://stable.melpa.org/packages/") ;stable
+                         ("melpa"      . "http://melpa.org/packages/") ;snapshots
                          ))
 
 (package-initialize)
@@ -20,10 +20,10 @@
   '(auto-complete      
     direx              
     exec-path-from-shell
-    flymake            
-    flymake-go         
-    git-commit-mode    
-    git-rebase-mode    
+    flycheck
+;;    flymake            
+;;    flymake-go         
+    git-commit    
     go-autocomplete    
     go-direx           
     go-eldoc           
@@ -34,8 +34,10 @@
     magit-gitflow      
     markdown-mode      
     popup              
+    solarized-theme
     yaml-mode          
-    yasnippet          
+    yasnippet
+    zenburn-theme
     )
   "List of packages needs to be installed at launch")
 

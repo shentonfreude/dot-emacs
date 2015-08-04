@@ -93,10 +93,10 @@
   :type '(repeat symbol)
   :group 'auto-complete)
 
-(defcustom ac-stop-flymake-on-completing t
-  "Non-nil means disble flymake temporarily on completing."
-  :type 'boolean
-  :group 'auto-complete)
+;; (defcustom ac-stop-flymake-on-completing t
+;;   "Non-nil means disble flymake temporarily on completing."
+;;   :type 'boolean
+;;   :group 'auto-complete)
 
 (defcustom ac-use-fuzzy t
   "Non-nil means use fuzzy matching."
@@ -1500,11 +1500,12 @@ that have been made before in this function."
       (ac-comphist-init))
   (unless ac-clear-variables-every-minute-timer
     (setq ac-clear-variables-every-minute-timer (run-with-timer 60 60 'ac-clear-variables-every-minute)))
-  (if ac-stop-flymake-on-completing
-      (defadvice flymake-on-timer-event (around ac-flymake-stop-advice activate)
-        (unless ac-completing
-          ad-do-it))
-    (ad-disable-advice 'flymake-on-timer-event 'around 'ac-flymake-stop-advice)))
+  ;; (if ac-stop-flymake-on-completing
+  ;;     (defadvice flymake-on-timer-event (around ac-flymake-stop-advice activate)
+  ;;       (unless ac-completing
+  ;;         ad-do-it))
+  ;;   (ad-disable-advice 'flymake-on-timer-event 'around 'ac-flymake-stop-advice))
+  )
 
 (define-minor-mode auto-complete-mode
   "AutoComplete mode"

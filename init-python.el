@@ -14,37 +14,45 @@
 ;;;  flake8
 ;;;  true
 
-(when (load "flymake" t)
-  (defun flymake-pyflakes-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-      (list "pychecker" (list local-file))))
+;;; 2015-08-04 Switch from flymake to flycheck
+;;; http://flycheck.readthedocs.org/en/0.22/guide/installation.html
+;;; pip install flake8 (or pylint)
+;;; Add flycheck to init-0-packages.el and install manually
 
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pyflakes-init)))
+;; (when (load "flymake" t)
+;;   (defun flymake-pyflakes-init ()
+;;     (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;;                        'flymake-create-temp-inplace))
+;;            (local-file (file-relative-name
+;;                         temp-file
+;;                         (file-name-directory buffer-file-name))))
+;;       (list "pychecker" (list local-file))))
 
-(add-hook 'find-file-hook 'flymake-find-file-hook)
-(load-library "flymake-cursor")
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;;                '("\\.py\\'" flymake-pyflakes-init)))
+
+;;(add-hook 'find-file-hook 'flymake-find-file-hook)
+;;(load-library "flymake-cursor")
 
 (defun my-python-mode-common-hook ()
+  (flycheck-mode t)
   (linum-mode t)
   (setq show-trailing-whitespace t) ; color set by customization at end of file
   )
 (add-hook 'python-mode-common-hook 'my-python-mode-common-hook)
 (add-hook 'python-mode-hook 'my-python-mode-common-hook)
-(add-hook 'python-mode-common-hook
-          (function
-           (lambda ()
-             (setq font-lock-keywords
-                   (append font-lock-keywords
-                           '(("\t+" (0 'my-tab-face append))
-                             ("^.\\{81,\\}$" (0 'my-long-line-face append))
-                             ("^.\\{81\\}\\(.+\\)$" (0 'my-long-line-facee append))
-;;                             ("[ \t]+$"      (0 'my-trailing-space-face append))
-                             ))))))
+
+;; flag lines longer than 80; this should be done by flycheck.
+;; (add-hook 'python-mode-common-hook
+;;           (function
+;;            (lambda ()
+;;              (setq font-lock-keywords
+;;                    (append font-lock-keywords
+;;                            '(("\t+" (0 'my-tab-face append))
+;;                              ("^.\\{81,\\}$" (0 'my-long-line-face append))
+;;                              ("^.\\{81\\}\\(.+\\)$" (0 'my-long-line-facee append))
+;; ;;                             ("[ \t]+$"      (0 'my-trailing-space-face append))
+;;                              ))))))
 
 
 

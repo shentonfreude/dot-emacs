@@ -9,6 +9,9 @@
 ;; goimports acts like gofmt but updates your Go import lines, adding
 ;; missing ones and removing unreferenced ones.
 ;;  go get code.google.com/p/go.tools/cmd/goimports
+
+;;; Code:
+
 (setq gofmt-command "goimports")
 ;;(add-to-list 'load-path "/home/you/somewhere/emacs/")
 ;;(require 'go-mode-load)
@@ -25,9 +28,10 @@
 ;; C-c C-d: godef-describe
 ;; C-c C-j: godef-jump
 
+;; 2015-08-04 use Flycheck instead of flymake
 ;; goflymake       (https://github.com/dougm/goflymake)
-(eval-after-load "go-mode"
-  '(require 'flymake-go))
+;;(eval-after-load "go-mode"
+;;  '(require 'flymake-go))
 
 ;; Autocomplete
 ;; TODO: doesn't work (yet, why)
@@ -61,3 +65,5 @@
 ;; - go-errcheck
 ;; - go-eldoc: show method signature in mode line
 ;; - coverage analysis
+
+;;; init-go.el ends here
