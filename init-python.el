@@ -37,6 +37,7 @@
 (defun my-python-mode-common-hook ()
   (flycheck-mode t)
   (linum-mode t)
+  (set-fill-column 79)
   (setq show-trailing-whitespace t) ; color set by customization at end of file
   )
 (add-hook 'python-mode-common-hook 'my-python-mode-common-hook)
