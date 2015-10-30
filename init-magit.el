@@ -27,7 +27,7 @@
 ;; git : magit
 (autoload 'magit-status "magit" nil t)
 ;; TOO easy to hit: (global-set-key (kbd "M-s M-s") 'magit-status) ;doesn't work -nox11 terminal
-(global-set-key (kbd "C-x C-g") 'magit-status) ;for -nox11 terminals
+(global-set-key (kbd "C-x g") 'magit-status) ;for -nox11 terminals
 
 ;; 2014-08-15 Add gitflow (C-f in magit status buffer)
 (require 'magit-gitflow)
