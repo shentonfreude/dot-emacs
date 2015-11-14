@@ -45,10 +45,10 @@
 
 ;; Customize
 
-(set-cursor-color "red")
+(set-cursor-color "purple")
 (blink-cursor-mode 1)			;-1 off, 1 on
 (setq blink-cursor-interval 0.25)	;default is 0.5 seconds
-(setq blink-cursor-delay 5)             ;default 0.5
+(setq blink-cursor-delay 1)             ;default 0.5
 
 
 ;;; init-color-theme.el ends here
