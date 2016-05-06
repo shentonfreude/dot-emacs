@@ -156,3 +156,5 @@
  ;;'(uniquify-buffer-name-style (quote reverse) nil (uniquify)))
 
 
+(put 'downcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
