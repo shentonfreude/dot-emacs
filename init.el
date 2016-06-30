@@ -156,5 +156,5 @@
  ;;'(uniquify-buffer-name-style (quote reverse) nil (uniquify)))
 
 
-(put 'downcase-region 'disabled nil)
+(put 'downcase-region 'disabled t)      ;too dangerous, I keep fucking up, maybe unmap ^x^l so I have to type it?
 (put 'narrow-to-region 'disabled nil)
