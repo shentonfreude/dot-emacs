@@ -34,11 +34,14 @@
 ;;(add-hook 'find-file-hook 'flymake-find-file-hook)
 ;;(load-library "flymake-cursor")
 
+;;; Code:
+
 (defun my-python-mode-common-hook ()
   (flycheck-mode t)
   (linum-mode t)
   (set-fill-column 79)
   (setq show-trailing-whitespace t) ; color set by customization at end of file
+  (define-key python-mode-map "\C-x n c" 'python-narrow-to-class)
   )
 (add-hook 'python-mode-common-hook 'my-python-mode-common-hook)
 (add-hook 'python-mode-hook 'my-python-mode-common-hook)
@@ -79,3 +82,26 @@ the current directory in Python's search path."
  (python-send-string "sys.path[0:0] = ['']"))
 (add-hook 'inferior-python-mode-hook 'python-reinstate-current-directory)
 
+;;; http://emacs.stackexchange.com/questions/13304/how-to-narrow-to-python-class
+;; (defun py-narrow-to-class ()
+;;   "Make text outside current class invisible. "
+;;   (interactive)
+;;   (save-excursion
+;;     (let ((start (if (py--statement-opens-class-p)  ;; not defined in python.el (is in python-mode.el?)
+;;                      (point)
+;;                    (py-beginning-of-class))))
+;;       (py-end-of-class)
+;;       (narrow-to-region (point) start))))
+
+;;; http://emacs.stackexchange.com/questions/13304/how-to-narrow-to-python-class
+(defun python-narrow-to-class ()
+  (interactive)
+  (save-excursion
+    (python-nav-beginning-of-block)
+    (python-nav-backward-up-list)
+    (python-nav-backward-up-list)
+    (forward-line)
+    (narrow-to-defun)))
+
+(provide 'init-python)
+;;; init-python.el ends here
