@@ -36,8 +36,8 @@
 
 
 (global-set-key (kbd "C-x F") 'menu-set-font ) ; or use C-x C-+, C-x C-, C-x C-0
-(set-face-font 'default "-apple-monaco-medium-r-normal--10-100-72-72-m-100-iso10646-1")
-;;(set-face-font 'default "-apple-monaco-medium-r-normal--12-100-72-72-m-100-iso10646-1")
+;;(set-face-font 'default "-apple-monaco-medium-r-normal--10-100-72-72-m-100-iso10646-1")
+(set-face-font 'default "-apple-monaco-medium-r-normal--12-100-72-72-m-100-iso10646-1")
 (setq linum-format "%d ")
 
 ;; Want to colorize escape codes; does this really work?
