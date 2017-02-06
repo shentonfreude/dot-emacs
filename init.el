@@ -158,6 +158,9 @@
  '(js2-mirror-mode nil)
  '(js2-mode-indent-ignore-first-tab t)
  '(magit-push-arguments nil)
+ '(package-selected-packages
+   (quote
+    (magit magit-popup zenburn-theme yasnippet yaml-mode tide solarized-theme markdown-mode magit-gitflow go-play go-errcheck go-eldoc go-direx go-autocomplete flymake-go exec-path-from-shell)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(save-place t nil (saveplace))
  '(show-paren-mode t)
