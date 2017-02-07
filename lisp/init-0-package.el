@@ -1,10 +1,14 @@
 ;; instructions from https://github.com/magit/magit#installation
 ;; M-x package-refresh-contents RET
 ;; M-x package-install RET magit RET
-(setq package-archives '(("gnu"          . "http://elpa.gnu.org/packages/") ;minimal, signed
-                         ;;("melpa-stable" . "http://stable.melpa.org/packages/") ;stable
-                         ("melpa"      . "http://melpa.org/packages/") ;snapshots
-                         ))
+
+;;; Code:
+
+(setq package-archives 
+      '(("gnu"          . "http://elpa.gnu.org/packages/") ;minimal, signed
+        ;;("melpa-stable" . "http://stable.melpa.org/packages/") ;stable
+        ("melpa"      . "http://melpa.org/packages/") ;snapshots
+        ))
 
 (package-initialize)
 
@@ -16,26 +20,30 @@
 ;; dramatically.
 
 (require 'cl)
+
+;; flymake
+;; flymake-go
+;; go-autocomplete
+;; go-direx
+;; go-eldoc
+;; go-errcheck
+;; go-mode
+;; go-play
 (defvar packages-list
-  '(auto-complete      
-    direx              
+  '(auto-complete
+    company
+    direx
     exec-path-from-shell
     flycheck
-;;    flymake            
-;;    flymake-go         
-    git-commit    
-    go-autocomplete    
-    go-direx           
-    go-eldoc           
-    go-errcheck        
-    go-mode            
-    go-play            
-    magit              
-    magit-gitflow      
-    markdown-mode      
-    popup              
+    git-commit
+    magit
+    magit-gitflow
+    markdown-mode
+    popup
     solarized-theme
-    yaml-mode          
+    tide
+    web-mode
+    yaml-mode
     yasnippet
     zenburn-theme
     )
