@@ -36,6 +36,13 @@
 
 ;;; Code:
 
+(require 'pyenv-mode-auto)
+
+(require 'pungi)
+(add-hook #'python-mode-hook
+          '(lambda ()
+             (pungi:setup-jedi)))
+
 (defun my-python-mode-common-hook ()
   (flycheck-mode t)
   (linum-mode t)
@@ -47,6 +54,7 @@
 (add-hook 'python-mode-common-hook 'my-python-mode-common-hook)
 (add-hook 'python-mode-hook 'my-python-mode-common-hook)
 (add-hook 'python-mode-hook 'jedi:setup)
+
 (setq jedi:complete-on-dot t)           ;start completion after inserting dot
 ;; .               jedi:dot-complete
 ;; C-c ,           jedi:goto-definition-pop-marker

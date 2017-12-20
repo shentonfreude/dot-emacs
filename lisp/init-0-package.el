@@ -31,42 +31,32 @@
 ;; go-errcheck
 ;; go-mode
 ;; go-play
-;; company                             ;conflicts with jedi, use or use jedi-company
-;; direx                               ;dependency of jedi-direx, go-direx
-;; git-commit                          ;dependency of magit
-;; popup                               ;dependency of auto-complete
-;; magit                               ;dependency of magit-gitflow
-;; epc                                    ;dependency of jedi-core
-;; may need to add these back:
-;; jedi-direx, direx
                                         ;
 ; Perhaps useful:
 ;; - projectile (manage projects): C-c ps switch to project, C-c pf List file s in proj
+;; - pyvenv.el: activate and workon supporte
 (defvar packages-list                   ;
   '(
-    ; needed by something in another init
-    go-autocomplete                     ;needed by something in another init
-    go-eldoc
-    ;
     exec-path-from-shell                ;use proper PATH from shell
     flycheck
-    ;jedi                                ; Python autocompletion (uses jedi-core, see pungi for venv)
-    company-jedi                                ; Python autocompletion (uses jedi-core, see pungi for venv)
-    magit-gitflow
+    jedi-direx                          ;directory tree
+    company-jedi                        ; Python autocompletion (uses jedi-core, see pungi for venv)
+    magit-gitflow                       ;requires magit
     markdown-mode
+    pungi                               ;virtualenv support for jedi: 201502... :-(
+    pyenv-mode-auto                     ;set by .../.python-version; no virtualenvwrapper support :-(
     solarized-theme
     tide
     web-mode
     yaml-mode
     yasnippet
     zenburn-theme
+    ; needed by something in another init
+    go-autocomplete                     ;needed by something in another init
+    go-eldoc
     )
   "List of packages needs to be installed at launch.")
 
-;; Jedi: python lib GH davidhalter/jedi -- implies needed globally or in all pythons
-;; Jedi.el
-;; PEC: Emacs/Pythonn RPC
-;; Onetime M-x jedi:install-server
 
 (defun has-package-not-installed ()
   (loop for p in packages-list
