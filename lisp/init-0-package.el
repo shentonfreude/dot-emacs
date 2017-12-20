@@ -5,9 +5,11 @@
 ;;; Code:
 
 (setq package-archives 
-      '(("gnu"          . "http://elpa.gnu.org/packages/") ;minimal, signed
-        ;;("melpa-stable" . "http://stable.melpa.org/packages/") ;stable
+      '(("gnu"          . "http://elpa.gnu.org/packages/") ;official, minimal, signed
         ("melpa"      . "http://melpa.org/packages/") ;snapshots
+        ;;("melpa-stable" . "http://stable.melpa.org/packages/") ;stable
+        ;; marmalade was OK but unmaintained, may be back now
+        ;; elpa was original, not maintained
         ))
 
 (package-initialize)
@@ -29,17 +31,28 @@
 ;; go-errcheck
 ;; go-mode
 ;; go-play
-(defvar packages-list
-  '(auto-complete
-    company
-    direx
-    exec-path-from-shell
+;; company                             ;conflicts with jedi, use or use jedi-company
+;; direx                               ;dependency of jedi-direx, go-direx
+;; git-commit                          ;dependency of magit
+;; popup                               ;dependency of auto-complete
+;; magit                               ;dependency of magit-gitflow
+;; epc                                    ;dependency of jedi-core
+;; may need to add these back:
+;; jedi-direx, direx
+                                        ;
+; Perhaps useful:
+;; - projectile (manage projects): C-c ps switch to project, C-c pf List file s in proj
+(defvar packages-list                   ;
+  '(
+    ; needed by something in another init
+    go-autocomplete                     ;needed by something in another init
+    go-eldoc
+    ;
+    exec-path-from-shell                ;use proper PATH from shell
     flycheck
-    git-commit
-    magit
+    jedi                                ; Python autocompletion (uses jedi-core, see pungi for venv)
     magit-gitflow
     markdown-mode
-    popup
     solarized-theme
     tide
     web-mode
@@ -47,7 +60,12 @@
     yasnippet
     zenburn-theme
     )
-  "List of packages needs to be installed at launch")
+  "List of packages needs to be installed at launch.")
+
+;; Jedi: python lib GH davidhalter/jedi -- implies needed globally or in all pythons
+;; Jedi.el
+;; PEC: Emacs/Pythonn RPC
+;; Onetime M-x jedi:install-server
 
 (defun has-package-not-installed ()
   (loop for p in packages-list
