@@ -50,7 +50,8 @@
     ;
     exec-path-from-shell                ;use proper PATH from shell
     flycheck
-    jedi                                ; Python autocompletion (uses jedi-core, see pungi for venv)
+    ;jedi                                ; Python autocompletion (uses jedi-core, see pungi for venv)
+    company-jedi                                ; Python autocompletion (uses jedi-core, see pungi for venv)
     magit-gitflow
     markdown-mode
     solarized-theme

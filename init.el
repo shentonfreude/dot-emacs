@@ -56,8 +56,8 @@
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-(require 'modeline-posn)
-(setq-default modelinepos-column-limit 79) ;highlights in modeline
+;; (require 'modeline-posn)
+;; (setq-default modelinepos-column-limit 79) ;highlights in modeline
 
 ;; Try this to highlight long lines
 ;; https://support.process-one.net/doc/display/MESSENGER/Lines+no+longer+than+80+columns#Linesnolongerthan80columns-Emacs%3Acolumnmaker
@@ -161,7 +161,7 @@
  '(mode-require-final-newline (quote ask))
  '(package-selected-packages
    (quote
-    (web-mode company magit magit-popup zenburn-theme yasnippet yaml-mode tide solarized-theme markdown-mode magit-gitflow go-play go-errcheck go-eldoc go-direx go-autocomplete flymake-go exec-path-from-shell)))
+    (zenburn-theme yasnippet yaml-mode web-mode tide solarized-theme markdown-mode magit-gitflow jedi flycheck-pyflakes flycheck-pycheckers exec-path-from-shell editorconfig)))
  '(require-final-newline (quote ask))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(save-place t nil (saveplace))

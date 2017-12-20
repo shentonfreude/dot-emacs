@@ -46,6 +46,16 @@
   )
 (add-hook 'python-mode-common-hook 'my-python-mode-common-hook)
 (add-hook 'python-mode-hook 'my-python-mode-common-hook)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)           ;start completion after inserting dot
+;; .               jedi:dot-complete
+;; C-c ,           jedi:goto-definition-pop-marker
+;; C-c .           jedi:goto-definition
+;; C-c ?           jedi:show-doc
+;; Need to set PYTHONPATH in .bashrc?
+;; deferred error : (error "Keyword argument :triggered not one of (:requires :force-init)")
+
+
 
 ;; flag lines longer than 80; this should be done by flycheck.
 ;; (add-hook 'python-mode-common-hook
