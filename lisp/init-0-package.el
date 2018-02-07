@@ -1,27 +1,10 @@
-;; instructions from https://github.com/magit/magit#installation
-;; M-x package-refresh-contents RET
-;; M-x package-install RET magit RET
+;;; package -- initialize the packages
+;;; Commentary:
+;;; ...
 
 ;;; Code:
 
-(setq package-archives 
-      '(("gnu"          . "http://elpa.gnu.org/packages/") ;official, minimal, signed
-        ("melpa"      . "http://melpa.org/packages/") ;snapshots
-        ;;("melpa-stable" . "http://stable.melpa.org/packages/") ;stable
-        ;; marmalade was OK but unmaintained, may be back now
-        ;; elpa was original, not maintained
-        ))
-
-(package-initialize)
-
-;; Ensure our desired packages are loaded into ELPA
-;; http://blog.zhengdong.me/2012/03/14/how-i-manage-emacs-packages/
-;; And you do not need to require them manually, since the packages
-;; ships auto-load, if you want to configure the package, use
-;; eval-after-load, this will decrease emacs starting time
-;; dramatically.
-
-(require 'cl)
+(require 'cl)                           ;NEEDED?
 
 ;; flymake
 ;; flymake-go
@@ -32,11 +15,28 @@
 ;; go-mode
 ;; go-play
                                         ;
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("gnu"          . "http://elpa.gnu.org/packages/")) ;official, minimal
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.org/packages/")) ;stable
+(add-to-list 'package-archives '("melpa"        . "http://melpa.org/packages/")) ;snapshots
+;;; marmalade looks abandoned
+(package-initialize)                    ;where was this 'require'd?
+
 ; Perhaps useful:
 ;; - projectile (manage projects): C-c ps switch to project, C-c pf List file s in proj
 ;; - pyvenv.el: activate and workon supporte
+;; - use-package: deferrable, compact package specs used by elpy docs
+;; - elpy:
+;; - - https://elpy.readthedocs.io/en/latest/introduction.html
+;; - - http://rakan.me/emacs/python-dev-with-emacs-and-pyenv/
 (defvar packages-list                   ;
   '(
+    ;; try use-package first then use it later
+    ;; dunno if we want to (use-package elpy ...) in their own init files
+    use-package
+    ;;
+    diminish                            ;minor mode with no modeline mods
+    elpy                                ;python mode
     exec-path-from-shell                ;use proper PATH from shell
     flycheck
     jedi-direx                          ;directory tree
@@ -51,14 +51,14 @@
     yaml-mode
     yasnippet
     zenburn-theme
-    ; needed by something in another init
+    ;; needed by something in another init
     go-autocomplete                     ;needed by something in another init
     go-eldoc
     )
   "List of packages needs to be installed at launch.")
 
-
 (defun has-package-not-installed ()
+  "Install packages that haven't been installed yet."
   (loop for p in packages-list
         when (not (package-installed-p p)) do (return t)
         finally (return nil)))
@@ -71,3 +71,14 @@
   (dolist (p packages-list)
     (when (not (package-installed-p p))
       (package-install p))))
+
+;;; we still have to install packages (above) on our system manually but
+;;; use-package will invoke load them more quickly and self-containedly
+
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)                     ;use-package: easier key binding
+(require 'diminish)                     ;NOTFOUND minor mode with not modeline
+
+(provide 'init-0-package)
+;;; init-0-package.el ends here
