@@ -17,6 +17,7 @@
 (add-hook 'javascript-mode-hook
           (linum-mode t)
           (setq show-trailing-whitespace t)
+          (setq js-indent-level 2)
           )
 
 (provide 'init-javascript)
