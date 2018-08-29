@@ -1,6 +1,6 @@
 ;;; package -- initialize the packages
 ;;; Commentary:
-;;; ...
+;;; Ensure packages installed before doing package-specific configs in init-*.el.
 
 ;;; Code:
 
@@ -25,7 +25,6 @@
 ; Perhaps useful:
 ;; - projectile (manage projects): C-c ps switch to project, C-c pf List file s in proj
 ;; - pyvenv.el: activate and workon supporte
-;; - use-package: 
 ;; - elpy:
 ;; - - https://elpy.readthedocs.io/en/latest/introduction.html
 ;; - - http://rakan.me/emacs/python-dev-with-emacs-and-pyenv/
@@ -47,12 +46,13 @@
     material-theme         ;more attractive than solarized
     pungi                  ;virtualenv support for jedi: 201502... :-(
     pyenv-mode-auto        ;set by .../.python-version; no virtualenvwrapper support :-(
-    solarized-theme
-    tide
+    realgud                ;modern GDB with PDB IDE-like support
+    solarized-theme        ;almost as nice as material-theme?
+    tide                   ;TypeScript IDE
     web-mode               ;HTML files
     yaml-mode              ;ug, YAML syntax, I need all the help I can get
     yasnippet
-    zenburn-theme          ;yet another theme
+    ;; zenburn-theme          ;yet another theme
     ;; Do I really want this 'go' stuff? I'm not doing development in it now
     ;; needed by something in another init
     go-autocomplete                     ;needed by something in another init
