@@ -25,7 +25,7 @@
 ; Perhaps useful:
 ;; - projectile (manage projects): C-c ps switch to project, C-c pf List file s in proj
 ;; - pyvenv.el: activate and workon supporte
-;; - use-package: deferrable, compact package specs used by elpy docs
+;; - use-package: 
 ;; - elpy:
 ;; - - https://elpy.readthedocs.io/en/latest/introduction.html
 ;; - - http://rakan.me/emacs/python-dev-with-emacs-and-pyenv/
@@ -33,24 +33,27 @@
   '(
     ;; try use-package first then use it later
     ;; dunno if we want to (use-package elpy ...) in their own init files
-    use-package
+    use-package            ;deferrable, compact package specs used by elpy docs
     ;;
-    diminish                            ;minor mode with no modeline mods
-    elpy                                ;python mode
-    exec-path-from-shell                ;use proper PATH from shell
-    flycheck
-    jedi-direx                          ;directory tree
-    company-jedi                        ; Python autocompletion (uses jedi-core, see pungi for venv)
-    magit-gitflow                       ;requires magit
-    markdown-mode
-    pungi                               ;virtualenv support for jedi: 201502... :-(
-    pyenv-mode-auto                     ;set by .../.python-version; no virtualenvwrapper support :-(
+    diminish               ;minor mode with no modeline mods
+    ein                    ;for IPython
+    elpy                   ;python mode
+    exec-path-from-shell   ;use proper PATH from shell
+    flycheck               ;PEP8 on the fly
+    jedi-direx             ;directory tree
+    company-jedi           ; Python autocompletion (uses jedi-core, see pungi for venv)
+    magit-gitflow          ;requires magit
+    markdown-mode          ;editing .md
+    material-theme         ;more attractive than solarized
+    pungi                  ;virtualenv support for jedi: 201502... :-(
+    pyenv-mode-auto        ;set by .../.python-version; no virtualenvwrapper support :-(
     solarized-theme
     tide
-    web-mode
-    yaml-mode
+    web-mode               ;HTML files
+    yaml-mode              ;ug, YAML syntax, I need all the help I can get
     yasnippet
-    zenburn-theme
+    zenburn-theme          ;yet another theme
+    ;; Do I really want this 'go' stuff? I'm not doing development in it now
     ;; needed by something in another init
     go-autocomplete                     ;needed by something in another init
     go-eldoc
@@ -76,7 +79,7 @@
 ;;; use-package will invoke load them more quickly and self-containedly
 
 (eval-when-compile
-  (require 'use-package))
+(require 'use-package))
 (require 'bind-key)                     ;use-package: easier key binding
 (require 'diminish)                     ;NOTFOUND minor mode with not modeline
 

@@ -1,8 +1,6 @@
 ;;; package -- emacs configuration
 ;;; Commentary:
-;;; Formerly ~/.emacs for Carbon Emacs, but also ready by AquaEmacs.
-;;; AquaEmacs prefers ~/Library/Preferences/Aquamacs Emacs/Preferences.el
-
+;;; Start initialization, mainly to run lisp/init-*el
 
 ;;; Code:
 ;; Added by Package.el.  This must come before configurations of
@@ -36,9 +34,6 @@
 (if (functionp 'tool-bar-mode) (tool-bar-mode -1))
 (menu-bar-mode 0)
 
-;; 2015-08-04 Try solarized-light defaults
-;; (set-background-color "OldLace") ;"AntiqueWhite2"  "ivory2" "ivory3
-
 ;; Linux shell output in yellow and white unreadable on OldLace background
 ;; Really should look at Solarized theme: http://ethanschoonover.com/solarized
 (setq ansi-color-names-vector
@@ -71,24 +66,12 @@
  '(my-trailing-space-face ((((class color)) (:background "OliveDrab1"))) t)
  '(trailing-whitespace ((((class color) (background light)) (:background "cyan")))))
 
-;; (add-hook 'font-lock-mode-hook
-;;           (function
-;;            (lambda ()
-;;              (setq font-lock-keywords
-;;                    (append font-lock-keywords
-;;                            '(("\t+" (0 'my-tab-face append))
-;;                              ("^.\\{81,\\}$" (0 'my-long-line-face append))
-;;                              ("^.\\{81\\}\\(.+\\)$" (0 'my-long-line-facee append))
-;; ;;                             ("[ \t]+$"      (0 'my-trailing-space-face append))
-;;                              ))))))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(display-time)
+;;(display-time)                          ;clutter's busy modeline
 (setq line-move-visual nil)		;use old style next-true-line
 (setq-default indent-tabs-mode nil)	;no TABS, use Spaces 
-(column-number-mode t)
-;;;
+(column-number-mode t)                  ;show col number in mode line
 
 ;;; Render Linux shells instead of showing escape codes
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
@@ -125,6 +108,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Load all the init-*.el files from our lisp/ directory
 
 (defun load-directory-files (dir &optional regex)
   (let*
@@ -136,9 +120,7 @@
     (mapc (lambda (file)
             (when (load file nil t)
               (message "`%s' LOADED." file))) files)))
-
 (load-directory-files emacs-dir "^init-.+el$")
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -149,8 +131,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("2e5705ad7ee6cfd6ab5ce81e711c526ac22abed90b852ffaf0b316aa7864b11f" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
- '(display-time-mode t)
+    ("732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "2e5705ad7ee6cfd6ab5ce81e711c526ac22abed90b852ffaf0b316aa7864b11f" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
+ '(display-time-mode nil)
  '(frame-background-mode (quote light))
  '(global-flycheck-mode t)
  '(js2-auto-indent-flag nil)
@@ -161,7 +143,7 @@
  '(mode-require-final-newline (quote ask))
  '(package-selected-packages
    (quote
-    (default-text-scale pungi zenburn-theme yasnippet yaml-mode web-mode tide solarized-theme markdown-mode magit-gitflow jedi flycheck-pyflakes flycheck-pycheckers exec-path-from-shell editorconfig)))
+    (material-theme ein pipenv default-text-scale pungi zenburn-theme yasnippet yaml-mode web-mode tide solarized-theme markdown-mode magit-gitflow jedi flycheck-pyflakes flycheck-pycheckers exec-path-from-shell editorconfig)))
  '(require-final-newline (quote ask))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(save-place t nil (saveplace))

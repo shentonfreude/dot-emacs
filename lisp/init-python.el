@@ -34,7 +34,21 @@
              :mode ("\\.py" . python-mode)
              :config
              (setq python-indent-offset 4)
+             (when (executable-find "ipython")
+               (setq python-interpreter "ipython")
+               (setq python-interpreter-args "-i --simple-prompt"))
              (elpy-enable))
+
+;;; 2018-07-18 ipython, numpy, pandas, matplotlib
+;;; On macOS (perhaps with pyenv-installed pythons), if you try:
+;;;   In [1]: import matplotlib.pyplot as plt
+;;; and get an error about "Python is not installed as a Framework",
+;;; then add to ~/.matplotlib/matplotlibrc:
+;;;   backend: TkAgg
+
+;;; To make pyflakes allow longer lines, in ~/.config/flake8:
+;;;   [flake8]
+;;;   max-line-length=100
 
 ;;; if you try to use Emacs with Elpy, you'll notice that Elpy does
 ;;; not recognize that you've already installed the dependencies it
@@ -93,7 +107,7 @@
 ;;           '(lambda ()
 ;;              (pungi:setup-jedi)))
 
-
+(add-hook 'python-mode-hook #'pipenv-mode)
 
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)           ;start completion after inserting dot

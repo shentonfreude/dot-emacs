@@ -7,3 +7,8 @@ abbrev_defs
 url/cookies
 elpa/
 
+/recentf
+/request/
+/places
+/eshell/history
+/.python-environments/

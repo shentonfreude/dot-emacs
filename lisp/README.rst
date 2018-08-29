@@ -2,35 +2,57 @@
  README
 ========
 
-I'm trying to set up a more useful python environment, with features
-that GUI/IDE users have -- code completion, finding function
-definitions in source files, etc.
+I want a Python environment with features that GUI/IDE users have --
+code completion, finding function definitions in source files, PDB
+breakpoint setting, etc.
 
-The big thing I'm struggling with is having it understand
-virtualenvs. I've moved to `pyenv` to manage my python versions, and
-our AVAIL project uses `virtualenvwrapper` for development environment
-isolation.  How can we get (say) `avail_api` code to find definitions
-in its virtualenv from the `avail` code and others?
+I've moved to `pyenv` and `pipenv` to manage my python versions an
+virtualenvironments.
 
 Progress
 ========
 
-Dammit, I saw pyvenv-workon suggest avail... and others, but now I'm
-not seeing it. It completes nothing.
+Real Python's post `Emacs - The Best Python Editor?
+<https://realpython.com/emacs-the-best-python-editor/>`_ has been super
+helpful.
 
-I need to take a break from this.
+* Elpy
+* Jedi
+* pyenv
+* pipenv
+
+Missing Features
+================
+
+* pdb mode with VSCode/PyCharm-like setting of breakpoints in code
+  buffer; look at the `realgud` debugger which claims to have this,
+  and more
 
 Tools
 =====
 
-Pip prerequisties
------------------
+Pip/pipenv prerequisties
+------------------------
 
 pip install jedi        # static code analysis for autocomletion
 pip install flake8
 pip install importmagic
-pip install autopep8    # can override line length on CLI
-pip install yapf        # I don't think I want this, too destructive
+
+
+Emacs packages
+--------------
+
+I'm using MELPA and add to it:
+
+* material-theme: I'm liking this better than the solarized variations
+* ein: for IPython
+* py-autopep8: formats code to conform to PEP8
+* blacken: I might use this to fix old/bad python for a clean start,
+  better than py-autopep8? it seems the new hotness
+
+Some of these can have configurations, like specifying maximum line
+length for PEP8-compliance.
+TODO: indicate dot-files and config files for this, global and project-specific
 
 Emacs Initialization
 ====================
@@ -53,12 +75,17 @@ Starting to use `use-package` since lots of docs use this.
 virtual environments
 --------------------
 
-May want `pungi`
+TODO: add more
 
 flycheck
 --------
 
 M-x flycheck-verify-setup
+
+jedi
+----
+
+TODO: There's a way to get it to install or verify its environment
 
 auto-complete/company
 ---------------------
@@ -78,18 +105,9 @@ This looks promising, if it can understand virtualenvs with workon:
   M-x elpy-rpc-restart to make the elpy Python process use your
   virtualenv.
 
-After activating with pyvenv-workon, it can't find jedi, autopep8,
-etc; looks like we need to pip install these into each venv :-(
-This sucks because we'll need it in our requirements.txt and it'll get
-forced on ALL devs.
-
-Trying it in avail_pipeline currently gives::
-
-  dyld: Library not loaded: @executable_path/../.Python
-  Referenced from: /Users/chris/.virtualenvs/avail_pipeline/bin/python
-  Reason: image not found
-
-I expect this is because my `workon` environment still points to brew Python.
+After activating with pyvenv-workon, it can't find jedi, autopep8, etc; looks
+like we need to pip install these into each venv :-( This sucks because we'll
+need it in our requirements.txt/Pipfile and it'll get forced on ALL devs.
 
 See what Elpy thinks of your virtualenvironment, etc, VERY useful:
 
@@ -166,7 +184,6 @@ TODO
 
 pylint
 projectile
-pip-requrements
 pycoverge.el -- highlight (un)covered code
 yasnippet -- already installed? used for inserting pdb, copyright mostly
 helm
