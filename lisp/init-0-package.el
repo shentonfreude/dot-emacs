@@ -44,6 +44,7 @@
     magit-gitflow          ;requires magit
     markdown-mode          ;editing .md
     material-theme         ;more attractive than solarized
+    pipenv                 ;use Pipfile[.lock], get pipenv shell
     pungi                  ;virtualenv support for jedi: 201502... :-(
     pyenv-mode-auto        ;set by .../.python-version; no virtualenvwrapper support :-(
     realgud                ;modern GDB with PDB IDE-like support
