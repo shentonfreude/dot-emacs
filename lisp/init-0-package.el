@@ -34,6 +34,7 @@
     ;; dunno if we want to (use-package elpy ...) in their own init files
     use-package            ;deferrable, compact package specs used by elpy docs
     ;;
+    blacken                ;use 'black' to format python
     diminish               ;minor mode with no modeline mods
     ein                    ;for IPython
     elpy                   ;python mode
@@ -44,10 +45,10 @@
     magit-gitflow          ;requires magit
     markdown-mode          ;editing .md
     material-theme         ;more attractive than solarized
+    pipenv                 ;use Pipfile[.lock], get pipenv shell
     pungi                  ;virtualenv support for jedi: 201502... :-(
     pyenv-mode-auto        ;set by .../.python-version; no virtualenvwrapper support :-(
     realgud                ;modern GDB with PDB IDE-like support
-    solarized-theme        ;almost as nice as material-theme?
     tide                   ;TypeScript IDE
     web-mode               ;HTML files
     yaml-mode              ;ug, YAML syntax, I need all the help I can get
