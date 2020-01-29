@@ -107,7 +107,8 @@
 ;;           '(lambda ()
 ;;              (pungi:setup-jedi)))
 
-(add-hook 'python-mode-hook #'pipenv-mode)
+;; 2020-01-03 Not finding pipenv reliable, don't confuse pyenv
+;; (add-hook 'python-mode-hook #'pipenv-mode)
 
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)           ;start completion after inserting dot
@@ -119,7 +120,9 @@
   (set-fill-column 79)
   (setq show-trailing-whitespace t) ; color set by customization at end of file
   (setq require-final-newline 'ask) ; gratuitous whitespace commits piss off Pyramid
+  (setq gud-pdb-command-name "python -m pdb") ; 2020-01-03 pdb not on PATH
   (define-key python-mode-map "\C-x n c" 'python-narrow-to-class)
+  
   )
 (add-hook 'python-mode-common-hook 'my-python-mode-common-hook)
 (add-hook 'python-mode-hook 'my-python-mode-common-hook)
