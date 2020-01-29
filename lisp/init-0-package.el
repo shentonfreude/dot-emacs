@@ -36,6 +36,7 @@
     ;;
     blacken                ;use 'black' to format python
     diminish               ;minor mode with no modeline mods
+    editorconfig           ;follow .editorconfig file direction
     ein                    ;for IPython
     elpy                   ;python mode
     exec-path-from-shell   ;use proper PATH from shell
