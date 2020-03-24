@@ -63,22 +63,23 @@
     )
   "List of packages needs to be installed at launch.")
 
-(defun has-package-not-installed ()
-  "Install packages that haven't been installed yet."
-  (loop for p in packages-list
-        when (not (package-installed-p p)) do (return t)
-        finally (return nil)))
-(when (has-package-not-installed)
-  ;; Check for new packages (package versions)
-  (message "%s" "Get latest versions of all packages...")
-  (package-refresh-contents)
-  (message "%s" " done.")
-  ;; Install the missing packages
-  (dolist (p packages-list)
-    (when (not (package-installed-p p))
-      (package-install p))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 2020-03-24 this seems easier than the below that I was doing
+;; https://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name
+ 
+; fetch the list of packages available 
 
-;;; we still have to install packages (above) on our system manually but
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; install the missing packages
+(dolist (package packages-list)
+  (unless (package-installed-p package)
+    (package-install package)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; we still have to install packages (above) on our system manually [WHY?] but
 ;;; use-package will invoke load them more quickly and self-containedly
 
 (eval-when-compile
