@@ -10,7 +10,7 @@
 ;; Customize
 
                                         ; yellow, chartreuse, magenta, ...
-(set-cursor-color "magenta")            ; material default orange hard to find
+(set-cursor-color "yellow")             ; material default orange hard to find
 (blink-cursor-mode 1)			;-1 off, 1 on
 (setq blink-cursor-interval 0.25)	;default is 0.5 seconds
 (setq blink-cursor-delay 1)             ;default 0.25
