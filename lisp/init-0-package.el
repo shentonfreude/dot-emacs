@@ -36,6 +36,7 @@
     ;;
     blacken                ;use 'black' to format python
     diminish               ;minor mode with no modeline mods
+    dockerfile-mode        ;editing Dockerfile
     editorconfig           ;follow .editorconfig file direction
     ein                    ;for IPython
     elpy                   ;python mode
