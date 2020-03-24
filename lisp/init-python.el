@@ -17,27 +17,32 @@
 
 ;;; Code:
 
+;; Installation: https://elpy.readthedocs.io/en/latest/introduction.html
+
 (use-package elpy
-             :init
-             (add-to-list 'auto-mode-alist '("\\.py$" .python-mode))
-             :bind (:map elpy-mode-map
-                         ("<M-left>" . nil)
-                         ("<M-right>" . nil)
-                         ("<M-S-left>" . elpy-nav-indent-shift-left)
-                         ("<M-S-right>" . elpy-nav-indent-shift-right)
-                         ("M-." . elpy-goto-definition)
-                         ("M-," . pop-tag-mark))
-             :config
-             (setq elpy-rpc-backend "jedi"))
+  :ensure t
+  :init
+  (elpy-enable)
+  (add-to-list 'auto-mode-alist '("\\.py$" .python-mode))
+  :bind (:map elpy-mode-map
+              ("<M-left>" . nil)
+              ("<M-right>" . nil)
+              ("<M-S-left>" . elpy-nav-indent-shift-left)
+              ("<M-S-right>" . elpy-nav-indent-shift-right)
+              ("M-." . elpy-goto-definition)
+              ("M-," . pop-tag-mark))
+  :config
+  (setq elpy-rpc-backend "jedi"))
 
 (use-package python
-             :mode ("\\.py" . python-mode)
-             :config
-             (setq python-indent-offset 4)
-             (when (executable-find "ipython")
-               (setq python-interpreter "ipython")
-               (setq python-interpreter-args "-i --simple-prompt"))
-             (elpy-enable))
+  :mode ("\\.py" . python-mode)
+  :config
+  (setq python-indent-offset 4)
+  (when (executable-find "ipython")
+    (setq python-interpreter "ipython")
+    (setq python-interpreter-args "-i --simple-prompt"))
+)
+
 
 ;;; 2018-07-18 ipython, numpy, pandas, matplotlib
 ;;; On macOS (perhaps with pyenv-installed pythons), if you try:
