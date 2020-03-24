@@ -135,7 +135,7 @@
  '(display-time-mode nil)
  '(frame-background-mode (quote light))
  '(global-flycheck-mode t)
- '(js-indent-level 4)
+ '(js-indent-level 4 t)
  '(js2-auto-indent-flag nil)
  '(js2-mirror-mode nil)
  '(js2-mode-indent-ignore-first-tab t)
