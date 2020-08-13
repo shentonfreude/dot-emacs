@@ -5,5 +5,6 @@
 
 (editorconfig-mode 1)                   ;always look for .editorconfig
 
+
 ;;; init-editorconfig ends here
 
