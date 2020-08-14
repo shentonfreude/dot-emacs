@@ -36,6 +36,9 @@
     ;;
     blacken                ;use 'black' to format python
     diminish               ;minor mode with no modeline mods
+    docker                 ;talk to docker processes https://github.com/Silex/docker.el
+    ;; docker-compose      ;edit docker-compose files with completion
+    docker-tramp           ;access contents of containers C-x C-f /docker:user@container:/path/to/file
     dockerfile-mode        ;editing Dockerfile
     editorconfig           ;follow .editorconfig file direction
     ein                    ;for IPython
@@ -52,6 +55,7 @@
     pyenv-mode-auto        ;set by .../.python-version; no virtualenvwrapper support :-(
     realgud                ;modern GDB with PDB IDE-like support
     tide                   ;TypeScript IDE
+    transient              ;needed by Silex's docker
     web-mode               ;HTML files
     yaml-mode              ;ug, YAML syntax, I need all the help I can get
     yasnippet
