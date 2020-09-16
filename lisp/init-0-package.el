@@ -16,11 +16,12 @@
 ;; go-play
                                         ;
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("gnu"          . "http://elpa.gnu.org/packages/")) ;official, minimal
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.org/packages/")) ;stable
-(add-to-list 'package-archives '("melpa"        . "http://melpa.org/packages/")) ;snapshots
-;;; marmalade looks abandoned
+(add-to-list 'package-archives '("gnu"          . "https://elpa.gnu.org/packages/")) ;official, minimal
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t) ;stable
 (package-initialize)                    ;where was this 'require'd?
+
+
+
 
 ; Perhaps useful:
 ;; - projectile (manage projects): C-c ps switch to project, C-c pf List file s in proj
