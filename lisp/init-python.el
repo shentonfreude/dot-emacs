@@ -164,5 +164,9 @@
 ;;     (forward-line)
 ;;     (narrow-to-defun)))
 
+;;; py-isort: pip install isort; use: M-x py-isort-buffer, M-x py-isort-region
+(require 'py-isort)
+;;(add-hook 'before-save-hook 'py-isort-before-save)
+
 (provide 'init-python)
 ;;; init-python.el ends here

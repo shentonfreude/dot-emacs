@@ -53,6 +53,7 @@
     pipenv                 ;use Pipfile[.lock], get pipenv shell
     pungi                  ;virtualenv support for jedi: 201502... :-(
     pyenv-mode-auto        ;set by .../.python-version; no virtualenvwrapper support :-(
+    py-isort               ;sort imports, uses isort CLI
     realgud                ;modern GDB with PDB IDE-like support
     tide                   ;TypeScript IDE
     transient              ;needed by Silex's docker
