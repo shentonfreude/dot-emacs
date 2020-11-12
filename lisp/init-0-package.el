@@ -19,7 +19,6 @@
 (add-to-list 'package-archives '("gnu"          . "https://elpa.gnu.org/packages/")) ;official, minimal
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/")) ;stable
 (add-to-list 'package-archives '("melpa"        . "https://melpa.org/packages/")) ;snapshots
-;;; marmalade looks abandoned
 (package-initialize)                    ;where was this 'require'd?
 
 ; Perhaps useful:
@@ -36,6 +35,9 @@
     ;;
     blacken                ;use 'black' to format python
     diminish               ;minor mode with no modeline mods
+    docker                 ;talk to docker processes https://github.com/Silex/docker.el
+    ;; docker-compose      ;edit docker-compose files with completion
+    docker-tramp           ;access contents of containers C-x C-f /docker:user@container:/path/to/file
     dockerfile-mode        ;editing Dockerfile
     editorconfig           ;follow .editorconfig file direction
     ein                    ;for IPython
@@ -50,8 +52,10 @@
     pipenv                 ;use Pipfile[.lock], get pipenv shell
     pungi                  ;virtualenv support for jedi: 201502... :-(
     pyenv-mode-auto        ;set by .../.python-version; no virtualenvwrapper support :-(
+    py-isort               ;sort imports, uses isort CLI
     realgud                ;modern GDB with PDB IDE-like support
     tide                   ;TypeScript IDE
+    transient              ;needed by Silex's docker
     web-mode               ;HTML files
     yaml-mode              ;ug, YAML syntax, I need all the help I can get
     yasnippet
