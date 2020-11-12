@@ -16,9 +16,9 @@
 ;; go-play
                                         ;
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("gnu"          . "http://elpa.gnu.org/packages/")) ;official, minimal
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.org/packages/")) ;stable
-(add-to-list 'package-archives '("melpa"        . "http://melpa.org/packages/")) ;snapshots
+(add-to-list 'package-archives '("gnu"          . "https://elpa.gnu.org/packages/")) ;official, minimal
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/")) ;stable
+(add-to-list 'package-archives '("melpa"        . "https://melpa.org/packages/")) ;snapshots
 ;;; marmalade looks abandoned
 (package-initialize)                    ;where was this 'require'd?
 
