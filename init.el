@@ -143,7 +143,35 @@
  '(mode-require-final-newline (quote ask))
  '(package-selected-packages
    (quote
-    (lorem-ipsum py-isort transient docker docker-tramp elpy dockerfile-mode blacken material-theme ein pipenv default-text-scale pungi zenburn-theme yasnippet yaml-mode web-mode tide solarized-theme markdown-mode magit-gitflow jedi flycheck-pyflakes flycheck-pycheckers exec-path-from-shell editorconfig)))
+    (
+     blacken 
+     default-text-scale
+     docker
+     docker-tramp
+     dockerfile-mode
+     editorconfig
+     ein
+     elpy
+     exec-path-from-shell
+     flycheck-pycheckers
+     flycheck-pyflakes
+     jedi
+     lorem-ipsum
+     magit-gitflow
+     markdown-mode
+     material-theme
+     pipenv
+     pungi
+     py-isort
+     solarized-theme
+     tide
+     transient
+     web-mode
+     yaml-mode
+     yasnippet
+     zenburn-theme
+     )
+    ))
  '(require-final-newline (quote ask))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(save-place t nil (saveplace))

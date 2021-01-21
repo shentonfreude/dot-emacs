@@ -18,12 +18,8 @@
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("gnu"          . "https://elpa.gnu.org/packages/")) ;official, minimal
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t) ;stable
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t) ;stable
 (add-to-list 'package-archives '("melpa"        . "https://melpa.org/packages/"))
 (package-initialize)                    ;where was this 'require'd?
-
-
-
 
 ; Perhaps useful:
 ;; - projectile (manage projects): C-c ps switch to project, C-c pf List file s in proj
