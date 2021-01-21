@@ -18,6 +18,8 @@
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("gnu"          . "https://elpa.gnu.org/packages/")) ;official, minimal
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t) ;stable
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t) ;stable
+(add-to-list 'package-archives '("melpa"        . "https://melpa.org/packages/"))
 (package-initialize)                    ;where was this 'require'd?
 
 
@@ -48,6 +50,7 @@
     flycheck               ;PEP8 on the fly
     jedi-direx             ;directory tree
     company-jedi           ; Python autocompletion (uses jedi-core, see pungi for venv)
+    lorem-ipsum            ; melpa nonstable
     magit-gitflow          ;requires magit
     markdown-mode          ;editing .md
     material-theme         ;more attractive than solarized
