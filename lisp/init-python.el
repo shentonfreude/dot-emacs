@@ -15,6 +15,8 @@
 ;;;  flake8
 ;;;  true
 
+
+
 ;;; Code:
 
 ;; Installation: https://elpy.readthedocs.io/en/latest/introduction.html
@@ -32,7 +34,10 @@
               ("M-." . elpy-goto-definition)
               ("M-," . pop-tag-mark))
   :config
-  (setq elpy-rpc-backend "jedi"))
+  (setq elpy-rpc-backend "jedi")
+  (setq elpy-rpc-virtualenv-path 'current) ; 'default .emacs/elpy/private-old-stuff
+)
+
 
 (use-package python
   :mode ("\\.py" . python-mode)
