@@ -1,7 +1,7 @@
 ;;; package: -- Summary
 
-
-;;; 2015-08-04 try Solarized or Zenburn instead
+;;; Commentary:
+;;; Does 'material' theme set the :background to be "dark" so neotree is not ugly?
 
 ;;; Code:
 

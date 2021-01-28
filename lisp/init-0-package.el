@@ -49,6 +49,7 @@
     magit-gitflow          ;requires magit
     markdown-mode          ;editing .md
     material-theme         ;more attractive than solarized
+    neotree                ;left nav tree browser, need to set so (background dark) evals true
     pipenv                 ;use Pipfile[.lock], get pipenv shell
     pungi                  ;virtualenv support for jedi: 201502... :-(
     pyenv-mode-auto        ;set by .../.python-version; no virtualenvwrapper support :-(

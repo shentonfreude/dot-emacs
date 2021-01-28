@@ -73,7 +73,14 @@
   :config
   (pyenv-mode)
   :bind
-  ("C-x p e" . pyenv-activate-current-project))
+  ("C-x p e" . pyenv-activate-current-project)
+)
+
+;; C-c C-u pyenv-unset shadows elpy C-c C-u ... for pdb tools
+(eval-after-load "pyenv-mode"
+  '(define-key pyenv-mode-map (kbd "C-c C-u") nil)
+)
+
 
 ;; Now what we'll need is a way to tell Emacs to update the currently
 ;; activated pyenv version every time we switch projects. You'll
