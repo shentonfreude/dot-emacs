@@ -14,7 +14,11 @@
 ;;; '(neo-header-face ((t (:foreground "SlateBlue1"))))
 ;;; '(neo-root-dir-face ((t (:foreground "cyan1"))))
 ;;;
-;;; But there must be a better way
+;;; But there must be a better way, the neotree color picker seems to
+;;; be looking for a 'dark' attribute in whatever theme I have:
+;;; ((background dark)) (:foreground "lightblue" :weight bold))
+;;;     (t                   (:foreground "DarkMagenta")))
+
 
 ;;; Code:
 
@@ -26,5 +30,3 @@
 
 ;;; init-neotree.el ends here
 
-((background dark)) (:foreground "lightblue" :weight bold))
-    (t                   (:foreground "DarkMagenta")))

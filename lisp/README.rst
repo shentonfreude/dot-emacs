@@ -6,8 +6,8 @@ I want a Python environment with features that GUI/IDE users have --
 code completion, finding function definitions in source files, PDB
 breakpoint setting, etc.
 
-I've moved to `pyenv` and `pipenv` to manage my python versions an
-virtualenvironments.
+I've moved to `pyenv` to manage my python versions an
+virtualenvironments; `pipenv` seemed to break too often.
 
 Progress
 ========
@@ -19,7 +19,6 @@ helpful.
 * Elpy
 * Jedi
 * pyenv
-* pipenv
 
 Missing Features
 ================
@@ -35,8 +34,8 @@ Pip/pipenv prerequisties
 ------------------------
 
 pip install jedi        # static code analysis for autocomletion
-pip install flake8
-pip install importmagic
+pip install flake8      # linter
+pip install importmagic # sort imports
 
 
 Emacs packages
@@ -45,10 +44,10 @@ Emacs packages
 I'm using MELPA and add to it:
 
 * material-theme: I'm liking this better than the solarized variations
+  (but it may not set `dark` which `neotree` looks for to set colors)
 * ein: for IPython
 * py-autopep8: formats code to conform to PEP8
-* blacken: I might use this to fix old/bad python for a clean start,
-  better than py-autopep8? it seems the new hotness
+* blacken: fascist formatting, and I'm OK with that
 
 Some of these can have configurations, like specifying maximum line
 length for PEP8-compliance.
@@ -75,7 +74,10 @@ Starting to use `use-package` since lots of docs use this.
 virtual environments
 --------------------
 
-TODO: add more
+For a project, create a virtualenv and tell pyenv to use it::
+  pyenv virtualenv 3.5.2 avail
+  pyenv local avail
+
 
 flycheck
 --------
@@ -86,6 +88,10 @@ jedi
 ----
 
 TODO: There's a way to get it to install or verify its environment
+
+jedi:setup
+jedi:show-setup-info
+
 
 auto-complete/company
 ---------------------

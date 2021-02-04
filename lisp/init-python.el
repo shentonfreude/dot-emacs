@@ -112,7 +112,7 @@
   "Initialize pyenv's current version to the global one."
   (let ((global-pyenv (replace-regexp-in-string "\n" "" (shell-command-to-string "pyenv global"))))
     (message (concat "Setting pyenv version to " global-pyenv))
-    (pyenv-mode-set global-pyenv)
+    ;;(pyenv-mode-set global-pyenv) ;; UNDEFINED2 pyenv-mode-set
     (setq pyenv-current-version global-pyenv)))
 (add-hook 'after-init-hook 'pyenv-init)
 ;; Which will initialize pyenv to use the global version at initialization.

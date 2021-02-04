@@ -26,6 +26,10 @@
 ;; - elpy:
 ;; - - https://elpy.readthedocs.io/en/latest/introduction.html
 ;; - - http://rakan.me/emacs/python-dev-with-emacs-and-pyenv/
+
+;; jedi-direx
+;;    pyenv-mode-auto        ;set by .../.python-version; no virtualenvwrapper support :-(
+
 (defvar packages-list                   ;
   '(
     ;; try use-package first then use it later
@@ -43,7 +47,6 @@
     elpy                   ;python mode
     exec-path-from-shell   ;use proper PATH from shell
     flycheck               ;PEP8 on the fly
-    jedi-direx             ;directory tree
     company-jedi           ; Python autocompletion (uses jedi-core, see pungi for venv)
     lorem-ipsum            ; melpa nonstable
     magit-gitflow          ;requires magit
@@ -52,7 +55,6 @@
     neotree                ;left nav tree browser, need to set so (background dark) evals true
     pipenv                 ;use Pipfile[.lock], get pipenv shell
     pungi                  ;virtualenv support for jedi: 201502... :-(
-    pyenv-mode-auto        ;set by .../.python-version; no virtualenvwrapper support :-(
     py-isort               ;sort imports, uses isort CLI
     realgud                ;modern GDB with PDB IDE-like support
     tide                   ;TypeScript IDE
