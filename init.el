@@ -150,7 +150,11 @@
     (immaterial-theme all-the-icons projectile neotree blacken default-text-scale docker docker-tramp dockerfile-mode editorconfig ein elpy exec-path-from-shell flycheck-pycheckers flycheck-pyflakes jedi lorem-ipsum magit-gitflow markdown-mode material-theme pipenv pungi py-isort solarized-theme tide transient web-mode yaml-mode yasnippet zenburn-theme)))
  '(projectile-mode t nil (projectile))
  '(require-final-newline (quote ask))
- '(safe-local-variable-values (quote ((encoding . utf-8))))
+ '(safe-local-variable-values
+   (quote
+    ((engine . django)
+     (web-mode-engine . django)
+     (encoding . utf-8))))
  '(save-place t nil (saveplace))
  '(show-paren-mode t)
  '(sql-sqlite-program "sqlite3" t)

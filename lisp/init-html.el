@@ -11,6 +11,7 @@
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
   (set-face-attribute 'web-mode-html-tag-bracket-face nil :foreground "Orange")
+  (set-variable 'web-mode-enable-engine-detection t) ; look for -*- engine:django -*-
 )
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
