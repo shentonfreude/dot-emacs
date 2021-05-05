@@ -48,12 +48,13 @@
     exec-path-from-shell   ;use proper PATH from shell
     flycheck               ;PEP8 on the fly
     company-jedi           ; Python autocompletion (uses jedi-core, see pungi for venv)
-    lorem-ipsum            ; melpa nonstable
+    ;lorem-ipsum            ; melpa nonstable
     magit-gitflow          ;requires magit
     markdown-mode          ;editing .md
     material-theme         ;more attractive than solarized
-    neotree                ;left nav tree browser, need to set so (background dark) evals true
+    neotree                ;left nav tree browser, need to set so (background dark) evals true CANNOT FIND MAYBE
     pipenv                 ;use Pipfile[.lock], get pipenv shell
+    projectile             ;
     pungi                  ;virtualenv support for jedi: 201502... :-(
     py-isort               ;sort imports, uses isort CLI
     realgud                ;modern GDB with PDB IDE-like support

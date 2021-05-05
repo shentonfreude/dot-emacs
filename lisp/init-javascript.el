@@ -26,6 +26,8 @@
         ;; ("json" . "/some/path/.*\\.api\\'")
         ;; ("xml"  . "/other/path/.*\\.api\\'")
         ))
+(setq web-mode-code-indent-offset 2)
+
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here
