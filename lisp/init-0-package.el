@@ -44,11 +44,14 @@
     dockerfile-mode        ;editing Dockerfile
     editorconfig           ;follow .editorconfig file direction
     ein                    ;for IPython
-    elpy                   ;python mode
+    elpy                   ;python mode -- requires pkgs in the venv, requirements.txt
     exec-path-from-shell   ;use proper PATH from shell
     flycheck               ;PEP8 on the fly
     company-jedi           ; Python autocompletion (uses jedi-core, see pungi for venv)
-    ;lorem-ipsum            ; melpa nonstable
+    go-autocomplete                     ;needed by something in another init
+    go-eldoc
+    lorem-ipsum            ; melpa nonstable
+    magit
     magit-gitflow          ;requires magit
     markdown-mode          ;editing .md
     material-theme         ;more attractive than solarized
@@ -66,10 +69,9 @@
     ;; zenburn-theme          ;yet another theme
     ;; Do I really want this 'go' stuff? I'm not doing development in it now
     ;; needed by something in another init
-    go-autocomplete                     ;needed by something in another init
-    go-eldoc
     )
   "List of packages needs to be installed at launch.")
+;; exec-path-from-shell
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 2020-03-24 this seems easier than the below that I was doing

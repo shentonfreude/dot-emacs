@@ -32,3 +32,5 @@
 ;; 2014-08-15 Add gitflow (C-f in magit status buffer)
 (require 'magit-gitflow)
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+
+(setq magit-clone-set-remote.pushDefault t) ;2021-02-19 try to default push to origin
