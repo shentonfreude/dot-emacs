@@ -145,8 +145,7 @@
  '(magit-push-arguments nil)
  '(mode-require-final-newline 'ask)
  '(package-selected-packages
-   '(immaterial-theme all-the-icons projectile neotree blacken default-text-scale docker docker-tramp dockerfile-mode editorconfig ein elpy exec-path-from-shell flycheck-pycheckers flycheck-pyflakes jedi lorem-ipsum magit-gitflow markdown-mode material-theme pipenv pungi py-isort solarized-theme tide transient web-mode yaml-mode yasnippet zenburn-theme))
- '(projectile-mode t nil (projectile))
+   '(immaterial-theme all-the-icons neotree blacken default-text-scale docker docker-tramp dockerfile-mode editorconfig ein elpy exec-path-from-shell flycheck-pycheckers flycheck-pyflakes jedi lorem-ipsum magit-gitflow markdown-mode material-theme pipenv pungi py-isort solarized-theme tide transient web-mode yaml-mode yasnippet zenburn-theme))
  '(require-final-newline 'ask)
  '(safe-local-variable-values
    '((engine . django)
