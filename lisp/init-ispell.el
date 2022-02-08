@@ -1,3 +1,3 @@
 ;;; ipsell
-(setq ispell-program-name "/usr/local/bin/aspell")
+(setq ispell-program-name "aspell")
 

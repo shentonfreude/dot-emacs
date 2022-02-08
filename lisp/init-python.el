@@ -87,6 +87,10 @@
 ;; notice in the :bind section of the above snippet that i configured
 ;; C-x p e to activate current project's pyenv configuration.
 
+;; 2022-01-25 this hasn't worked for months,
+;; use pyvenv-activate ~/.pyenv/versions/<version name>
+;; or pyenv-mode-set <version name>
+
 (defun pyenv-activate-current-project ()
   "Automatically activates pyenv version if .python-version file exists."
   (interactive)

@@ -16,6 +16,10 @@
   )
 ;;(add-hook 'shell-mode-hook 'my-shell-mode-hook)
 
+
+(setq explicit-zsh-args '("--interactive" "--login")) ; 2022-01-25 login shell for pyenv
+(setq comint-process-echoes 0)          ; don't echo my command
+
 (provide 'init-shell)
 ;;; init-shell.el ends here
 
