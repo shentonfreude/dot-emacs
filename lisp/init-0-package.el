@@ -55,7 +55,6 @@
     material-theme         ;more attractive than solarized
     neotree                ;left nav tree browser, need to set so (background dark) evals true CANNOT FIND MAYBE
     pipenv                 ;use Pipfile[.lock], get pipenv shell
-    projectile             ;
     pungi                  ;virtualenv support for jedi: 201502... :-(
     py-isort               ;sort imports, uses isort CLI
     realgud                ;modern GDB with PDB IDE-like support
