@@ -8,7 +8,6 @@
 
 ;; flymake
 ;; flymake-go
-;; go-autocomplete
 ;; go-direx
 ;; go-eldoc
 ;; go-errcheck
@@ -48,7 +47,6 @@
     exec-path-from-shell   ;use proper PATH from shell
     flycheck               ;PEP8 on the fly
     company-jedi           ; Python autocompletion (uses jedi-core, see pungi for venv)
-    go-autocomplete                     ;needed by something in another init
     go-eldoc
     lorem-ipsum            ; melpa nonstable
     magit
