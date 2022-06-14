@@ -36,7 +36,6 @@
 ;; Autocomplete
 ;; TODO: doesn't work (yet, why)
 ;; go get -u github.com/nsf/gocode (-u flag for "update")
-(require 'go-autocomplete)
 (require 'auto-complete-config)
 
 ;; Show docs on modeline of oject at point
