@@ -50,17 +50,18 @@
     company-jedi           ; Python autocompletion (uses jedi-core, see pungi for venv)
     go-autocomplete                     ;needed by something in another init
     go-eldoc
-    lorem-ipsum            ; melpa nonstable
     magit
     magit-gitflow          ;requires magit
     markdown-mode          ;editing .md
     material-theme         ;more attractive than solarized
     neotree                ;left nav tree browser, need to set so (background dark) evals true CANNOT FIND MAYBE
+    pyenv-mode             ;find local pyenv from .python-version
     pipenv                 ;use Pipfile[.lock], get pipenv shell
     projectile             ;
     pungi                  ;virtualenv support for jedi: 201502... :-(
     py-isort               ;sort imports, uses isort CLI
     realgud                ;modern GDB with PDB IDE-like support
+    terraform-mode         ;2022-02-08 for WSO
     tide                   ;TypeScript IDE
     transient              ;needed by Silex's docker
     web-mode               ;HTML files
