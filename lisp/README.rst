@@ -189,7 +189,6 @@ TODO
 ====
 
 pylint
-projectile
 pycoverge.el -- highlight (un)covered code
 yasnippet -- already installed? used for inserting pdb, copyright mostly
 helm
