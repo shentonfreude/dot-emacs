@@ -16,3 +16,5 @@ elpa/
 tramp
 url/cookies
 /ido.last
+/.emacs.desktop
+/.emacs.desktop.lock
